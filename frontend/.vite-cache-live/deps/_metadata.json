@@ -1,0 +1,150 @@
+{
+  "hash": "2910710c",
+  "configHash": "8268d59a",
+  "lockfileHash": "5a1a6ceb",
+  "browserHash": "9da987d2",
+  "optimized": {
+    "@mui/icons-material/Bolt": {
+      "src": "../../node_modules/@mui/icons-material/Bolt.mjs",
+      "file": "@mui_icons-material_Bolt.js",
+      "fileHash": "127ef209",
+      "needsInterop": false
+    },
+    "@mui/icons-material/CrisisAlert": {
+      "src": "../../node_modules/@mui/icons-material/CrisisAlert.mjs",
+      "file": "@mui_icons-material_CrisisAlert.js",
+      "fileHash": "84f0f2a4",
+      "needsInterop": false
+    },
+    "@mui/icons-material/LocalFireDepartment": {
+      "src": "../../node_modules/@mui/icons-material/LocalFireDepartment.mjs",
+      "file": "@mui_icons-material_LocalFireDepartment.js",
+      "fileHash": "032ba14d",
+      "needsInterop": false
+    },
+    "@mui/icons-material/NotificationsActive": {
+      "src": "../../node_modules/@mui/icons-material/NotificationsActive.mjs",
+      "file": "@mui_icons-material_NotificationsActive.js",
+      "fileHash": "7c406407",
+      "needsInterop": false
+    },
+    "@mui/icons-material/Public": {
+      "src": "../../node_modules/@mui/icons-material/Public.mjs",
+      "file": "@mui_icons-material_Public.js",
+      "fileHash": "4175256f",
+      "needsInterop": false
+    },
+    "@mui/icons-material/QueryStats": {
+      "src": "../../node_modules/@mui/icons-material/QueryStats.mjs",
+      "file": "@mui_icons-material_QueryStats.js",
+      "fileHash": "c8661d00",
+      "needsInterop": false
+    },
+    "@mui/icons-material/Search": {
+      "src": "../../node_modules/@mui/icons-material/Search.mjs",
+      "file": "@mui_icons-material_Search.js",
+      "fileHash": "40b6cb57",
+      "needsInterop": false
+    },
+    "@mui/icons-material/Settings": {
+      "src": "../../node_modules/@mui/icons-material/Settings.mjs",
+      "file": "@mui_icons-material_Settings.js",
+      "fileHash": "d033d5bb",
+      "needsInterop": false
+    },
+    "@mui/icons-material/ShowChart": {
+      "src": "../../node_modules/@mui/icons-material/ShowChart.mjs",
+      "file": "@mui_icons-material_ShowChart.js",
+      "fileHash": "33c053fa",
+      "needsInterop": false
+    },
+    "@mui/icons-material/Speed": {
+      "src": "../../node_modules/@mui/icons-material/Speed.mjs",
+      "file": "@mui_icons-material_Speed.js",
+      "fileHash": "d93cac95",
+      "needsInterop": false
+    },
+    "@mui/icons-material/SportsSoccer": {
+      "src": "../../node_modules/@mui/icons-material/SportsSoccer.mjs",
+      "file": "@mui_icons-material_SportsSoccer.js",
+      "fileHash": "3e140c86",
+      "needsInterop": false
+    },
+    "@mui/icons-material/Timeline": {
+      "src": "../../node_modules/@mui/icons-material/Timeline.mjs",
+      "file": "@mui_icons-material_Timeline.js",
+      "fileHash": "d73d4a43",
+      "needsInterop": false
+    },
+    "@mui/icons-material/TrendingDown": {
+      "src": "../../node_modules/@mui/icons-material/TrendingDown.mjs",
+      "file": "@mui_icons-material_TrendingDown.js",
+      "fileHash": "e56e9e4a",
+      "needsInterop": false
+    },
+    "@mui/icons-material/TrendingUp": {
+      "src": "../../node_modules/@mui/icons-material/TrendingUp.mjs",
+      "file": "@mui_icons-material_TrendingUp.js",
+      "fileHash": "51733810",
+      "needsInterop": false
+    },
+    "@mui/icons-material/WarningAmber": {
+      "src": "../../node_modules/@mui/icons-material/WarningAmber.mjs",
+      "file": "@mui_icons-material_WarningAmber.js",
+      "fileHash": "66da7aac",
+      "needsInterop": false
+    },
+    "@mui/material": {
+      "src": "../../node_modules/@mui/material/index.mjs",
+      "file": "@mui_material.js",
+      "fileHash": "bf035591",
+      "needsInterop": false
+    },
+    "react-dom": {
+      "src": "../../node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "84300cc6",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "a56af222",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "c67e850f",
+      "needsInterop": true
+    },
+    "react/compiler-runtime": {
+      "src": "../../node_modules/react/compiler-runtime.js",
+      "file": "react_compiler-runtime.js",
+      "fileHash": "0fac1cf2",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "fdaaa9de",
+      "needsInterop": true
+    },
+    "react/jsx-runtime": {
+      "src": "../../node_modules/react/jsx-runtime.js",
+      "file": "react_jsx-runtime.js",
+      "fileHash": "e225a497",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "createSvgIcon-Dyouk0YR": {
+      "file": "createSvgIcon-Dyouk0YR.js",
+      "isDynamicEntry": false
+    },
+    "react-BDWiK9rz": {
+      "file": "react-BDWiK9rz.js",
+      "isDynamicEntry": false
+    }
+  }
+}
