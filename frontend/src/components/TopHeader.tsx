@@ -13,9 +13,10 @@ import { C } from '../colors';
 interface Props {
   shockActive: boolean;
   onSimulateShock: () => void;
+  onBackHome?: () => void;
 }
 
-export default function TopHeader({ shockActive, onSimulateShock }: Props) {
+export default function TopHeader({ shockActive, onSimulateShock, onBackHome }: Props) {
   return (
     <Box
       sx={{
@@ -31,7 +32,19 @@ export default function TopHeader({ shockActive, onSimulateShock }: Props) {
       }}
     >
       {/* Brand */}
-      <Stack direction="row" alignItems="center" gap={1} sx={{ minWidth: 220 }}>
+      <Stack
+        direction="row"
+        alignItems="center"
+        gap={1}
+        onClick={onBackHome}
+        sx={{
+          minWidth: 220,
+          cursor: onBackHome ? 'pointer' : 'default',
+          opacity: 1,
+          transition: 'opacity 0.15s ease',
+          '&:hover': onBackHome ? { opacity: 0.7 } : {},
+        }}
+      >
         <Typography
           sx={{
             fontWeight: 800,
