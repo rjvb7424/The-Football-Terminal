@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { C, impactColor } from '../colors';
-import { TICKER_ITEMS } from '../data/mockSignals';
+import { C } from '../../colors';
+import { TICKER_ITEMS } from '../../data/mockSignals';
 
 const kindColor = (kind: 'positive' | 'negative' | 'amber') => {
   if (kind === 'positive') return C.positive;
@@ -42,38 +42,20 @@ function TickerItem({ item }: { item: typeof TICKER_ITEMS[0] }) {
           py: 0.1,
         }}
       >
-        <Typography
-          sx={{
-            fontSize: '0.58rem',
-            fontWeight: 800,
-            color,
-            letterSpacing: '0.08em',
-            fontFamily: 'monospace',
-          }}
-        >
+        <Typography sx={{ fontSize: '0.58rem', fontWeight: 800, color, letterSpacing: '0.08em', fontFamily: 'monospace' }}>
           {item.tag}
         </Typography>
       </Box>
       <Typography sx={{ fontSize: '0.7rem', color: C.text2, whiteSpace: 'nowrap' }}>
         {item.text}
       </Typography>
-      <Typography
-        className="mono"
-        sx={{
-          fontSize: '0.68rem',
-          fontWeight: 700,
-          color,
-          ml: 0.5,
-          whiteSpace: 'nowrap',
-        }}
-      >
+      <Typography className="mono" sx={{ fontSize: '0.68rem', fontWeight: 700, color, ml: 0.5, whiteSpace: 'nowrap' }}>
         {sign}{item.change}
       </Typography>
     </Box>
   );
 }
 
-// Duplicate items for seamless infinite scroll
 const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
 
 export default function LiveTicker() {
@@ -90,37 +72,23 @@ export default function LiveTicker() {
         position: 'relative',
       }}
     >
-      {/* Left fade */}
       <Box
         sx={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          bottom: 0,
-          width: 40,
+          position: 'absolute', left: 0, top: 0, bottom: 0, width: 40,
           background: `linear-gradient(to right, ${C.bg}, transparent)`,
-          zIndex: 2,
-          pointerEvents: 'none',
+          zIndex: 2, pointerEvents: 'none',
         }}
       />
-
       <Box className="ticker-track" sx={{ display: 'flex', alignItems: 'center', height: '100%' }}>
         {items.map((item, i) => (
           <TickerItem key={`${item.tag}-${i}`} item={item} />
         ))}
       </Box>
-
-      {/* Right fade */}
       <Box
         sx={{
-          position: 'absolute',
-          right: 0,
-          top: 0,
-          bottom: 0,
-          width: 40,
+          position: 'absolute', right: 0, top: 0, bottom: 0, width: 40,
           background: `linear-gradient(to left, ${C.bg}, transparent)`,
-          zIndex: 2,
-          pointerEvents: 'none',
+          zIndex: 2, pointerEvents: 'none',
         }}
       />
     </Box>

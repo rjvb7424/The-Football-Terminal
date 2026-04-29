@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
@@ -8,7 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Search from '@mui/icons-material/Search';
 import CrisisAlert from '@mui/icons-material/CrisisAlert';
 import Bolt from '@mui/icons-material/Bolt';
-import { C } from '../colors';
+import { C } from '../../colors';
 
 interface Props {
   shockActive: boolean;
@@ -32,15 +31,15 @@ export default function TopHeader({ shockActive, onSimulateShock, onBackHome }: 
       }}
     >
       {/* Brand */}
-      <Stack
-        direction="row"
-        alignItems="center"
-        gap={1}
+      <Box
         onClick={onBackHome}
         sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 1,
           minWidth: 220,
           cursor: onBackHome ? 'pointer' : 'default',
-          opacity: 1,
           transition: 'opacity 0.15s ease',
           '&:hover': onBackHome ? { opacity: 0.7 } : {},
         }}
@@ -61,7 +60,7 @@ export default function TopHeader({ shockActive, onSimulateShock, onBackHome }: 
         </Typography>
         <Typography
           sx={{
-            fontSize: '0.62rem',
+            fontSize: '0.6rem',
             color: C.text3,
             fontStyle: 'italic',
             whiteSpace: 'nowrap',
@@ -70,16 +69,16 @@ export default function TopHeader({ shockActive, onSimulateShock, onBackHome }: 
         >
           before the narrative catches up
         </Typography>
-      </Stack>
+      </Box>
 
-      {/* Monitoring stats */}
-      <Stack direction="row" alignItems="center" gap={2} sx={{ flex: 1 }}>
-        <Stack direction="row" alignItems="center" gap={0.75}>
+      {/* Live stats */}
+      <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2, flex: 1 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 0.75 }}>
           <span className="live-dot" />
           <Typography sx={{ fontSize: '0.7rem', color: C.text2, fontWeight: 600, letterSpacing: '0.04em' }}>
             LIVE
           </Typography>
-        </Stack>
+        </Box>
 
         <Typography sx={{ fontSize: '0.68rem', color: C.text3, fontFamily: 'monospace' }}>
           Monitoring{' '}
@@ -104,10 +103,10 @@ export default function TopHeader({ shockActive, onSimulateShock, onBackHome }: 
             fontWeight: 700,
           }}
         />
-      </Stack>
+      </Box>
 
-      {/* Simulate Shock */}
-      <Tooltip title="Trigger a major football shock event and watch probabilities shift" arrow>
+      {/* Shock button */}
+      <Tooltip title="Trigger a major football shock event to watch probabilities shift" arrow>
         <Button
           onClick={onSimulateShock}
           size="small"

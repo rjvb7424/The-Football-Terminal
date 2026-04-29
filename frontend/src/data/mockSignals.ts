@@ -118,10 +118,10 @@ export const CHART_TEAMS: ChartTeam[] = [
 ];
 
 export const CHART_PRE_SHOCK: ChartTeam[] = [
-  { ...CHART_TEAMS[0], points: Array(25).fill(0).map((_, i) => Math.max(0, 80 + (Math.random() - 0.5) * 3)), pointsShocked: [] },
-  { ...CHART_TEAMS[1], points: Array(25).fill(0).map((_, i) => Math.max(0, 39 + (Math.random() - 0.5) * 3)), pointsShocked: [] },
-  { ...CHART_TEAMS[2], points: Array(25).fill(0).map((_, i) => Math.max(0, 43 + (Math.random() - 0.5) * 3)), pointsShocked: [] },
-  { ...CHART_TEAMS[3], points: Array(25).fill(0).map((_, i) => Math.max(0, 24 + (Math.random() - 0.5) * 3)), pointsShocked: [] },
+  { ...CHART_TEAMS[0], points: Array(25).fill(0).map((_) => Math.max(0, 80 + (Math.random() - 0.5) * 3)), pointsShocked: [] },
+  { ...CHART_TEAMS[1], points: Array(25).fill(0).map((_) => Math.max(0, 39 + (Math.random() - 0.5) * 3)), pointsShocked: [] },
+  { ...CHART_TEAMS[2], points: Array(25).fill(0).map((_) => Math.max(0, 43 + (Math.random() - 0.5) * 3)), pointsShocked: [] },
+  { ...CHART_TEAMS[3], points: Array(25).fill(0).map((_) => Math.max(0, 24 + (Math.random() - 0.5) * 3)), pointsShocked: [] },
 ];
 
 // ─── Ticker Items ──────────────────────────────────────────────

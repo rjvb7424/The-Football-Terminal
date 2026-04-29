@@ -3,23 +3,26 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import theme from './theme';
-import LandingPage from './components/LandingPage';
-import Sidebar from './components/Sidebar';
-import TopHeader from './components/TopHeader';
-import LiveTicker from './components/LiveTicker';
-import FilterBar from './components/FilterBar';
-import DashboardGrid from './components/DashboardGrid';
+
+import DashboardLayout from './components/layout/DashboardLayout';
+import type { PageId } from './components/layout/Sidebar';
+
+import LandingPage from './components/pages/LandingPage';
+import OverviewPage from './components/pages/OverviewPage';
+import LiveSignalsPage from './components/pages/LiveSignalsPage';
+import ProbabilityShiftsPage from './components/pages/ProbabilityShiftsPage';
+import LiveMatchesPage from './components/pages/LiveMatchesPage';
+import TitleRacesPage from './components/pages/TitleRacesPage';
+import TransfersPage from './components/pages/TransfersPage';
+import AlertsPage from './components/pages/AlertsPage';
 
 type View = 'home' | 'dashboard';
 
 export default function App() {
   const [view, setView] = useState<View>('home');
   const [fading, setFading] = useState(false);
-
-  const [selectedNav, setSelectedNav] = useState('situation');
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activePage, setActivePage] = useState<PageId>('overview');
   const [shockActive, setShockActive] = useState(true);
-  const [featuredSignalId, setFeaturedSignalId] = useState('sig-001');
 
   const switchView = useCallback((next: View) => {
     setFading(true);
@@ -34,19 +37,24 @@ export default function App() {
 
   const handleSimulateShock = useCallback(() => {
     setShockActive(prev => !prev);
-    if (!shockActive) {
-      setFeaturedSignalId('sig-001');
-    }
-  }, [shockActive]);
-
-  const handleSignalSelect = useCallback((id: string) => {
-    setFeaturedSignalId(id);
   }, []);
+
+  const renderPage = () => {
+    switch (activePage) {
+      case 'overview':   return <OverviewPage shockActive={shockActive} />;
+      case 'signals':    return <LiveSignalsPage />;
+      case 'shifts':     return <ProbabilityShiftsPage />;
+      case 'matches':    return <LiveMatchesPage />;
+      case 'titles':     return <TitleRacesPage />;
+      case 'transfers':  return <TransfersPage />;
+      case 'alerts':     return <AlertsPage />;
+      default:           return <OverviewPage shockActive={shockActive} />;
+    }
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-
       <Box
         sx={{
           width: '100vw',
@@ -59,33 +67,15 @@ export default function App() {
         {view === 'home' ? (
           <LandingPage onEnterDashboard={handleEnterDashboard} />
         ) : (
-          <Box
-            sx={{
-              display: 'flex',
-              width: '100%',
-              height: '100%',
-              overflow: 'hidden',
-              bgcolor: '#080b0f',
-            }}
+          <DashboardLayout
+            activePage={activePage}
+            onPageChange={setActivePage}
+            onBackHome={handleBackHome}
+            shockActive={shockActive}
+            onSimulateShock={handleSimulateShock}
           >
-            <Sidebar active={selectedNav} onSelect={setSelectedNav} />
-
-            <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minWidth: 0 }}>
-              <TopHeader
-                shockActive={shockActive}
-                onSimulateShock={handleSimulateShock}
-                onBackHome={handleBackHome}
-              />
-              <LiveTicker />
-              <FilterBar active={activeFilter} onChange={setActiveFilter} />
-              <DashboardGrid
-                shockActive={shockActive}
-                activeFilter={activeFilter}
-                featuredSignalId={featuredSignalId}
-                onSignalSelect={handleSignalSelect}
-              />
-            </Box>
-          </Box>
+            {renderPage()}
+          </DashboardLayout>
         )}
       </Box>
     </ThemeProvider>
