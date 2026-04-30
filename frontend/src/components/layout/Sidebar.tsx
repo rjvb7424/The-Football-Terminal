@@ -1,12 +1,12 @@
 import type { ReactElement } from 'react';
 import Box from '@mui/material/Box';
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import SportsSoccer from '@mui/icons-material/SportsSoccer';
 import Dashboard from '@mui/icons-material/Dashboard';
 import Bolt from '@mui/icons-material/Bolt';
 import QueryStats from '@mui/icons-material/QueryStats';
+import SportsSoccerOutlined from '@mui/icons-material/SportsSoccerOutlined';
 import EmojiEvents from '@mui/icons-material/EmojiEvents';
 import SwapHoriz from '@mui/icons-material/SwapHoriz';
 import NotificationsActive from '@mui/icons-material/NotificationsActive';
@@ -16,14 +16,14 @@ import { C } from '../../colors';
 
 export type PageId = 'overview' | 'signals' | 'shifts' | 'matches' | 'titles' | 'transfers' | 'alerts';
 
-const NAV_ITEMS: { id: PageId; icon: ReactElement; label: string }[] = [
-  { id: 'overview',   icon: <Dashboard sx={{ fontSize: 19 }} />,         label: 'Overview' },
-  { id: 'signals',    icon: <Bolt sx={{ fontSize: 19 }} />,              label: 'Live Signals' },
-  { id: 'shifts',     icon: <QueryStats sx={{ fontSize: 19 }} />,        label: 'Probability Shifts' },
-  { id: 'matches',    icon: <SportsSoccer sx={{ fontSize: 19 }} />,      label: 'Live Matches' },
-  { id: 'titles',     icon: <EmojiEvents sx={{ fontSize: 19 }} />,       label: 'Title Races' },
-  { id: 'transfers',  icon: <SwapHoriz sx={{ fontSize: 19 }} />,         label: 'Transfers' },
-  { id: 'alerts',     icon: <NotificationsActive sx={{ fontSize: 19 }} />, label: 'Alerts' },
+const NAV_ITEMS: { id: PageId; icon: ReactElement; label: string; question: string }[] = [
+  { id: 'overview',   icon: <Dashboard sx={{ fontSize: 16 }} />,                label: 'Overview',            question: 'What matters most?' },
+  { id: 'signals',    icon: <Bolt sx={{ fontSize: 16 }} />,                     label: 'Live Signals',        question: 'What happened?' },
+  { id: 'shifts',     icon: <QueryStats sx={{ fontSize: 16 }} />,               label: 'Probability Shifts',  question: 'What changed?' },
+  { id: 'matches',    icon: <SportsSoccerOutlined sx={{ fontSize: 16 }} />,     label: 'Live Matches',        question: 'How is it changing?' },
+  { id: 'titles',     icon: <EmojiEvents sx={{ fontSize: 16 }} />,              label: 'Title Races',         question: 'Who is winning?' },
+  { id: 'transfers',  icon: <SwapHoriz sx={{ fontSize: 16 }} />,                label: 'Transfers',           question: 'What moves are live?' },
+  { id: 'alerts',     icon: <NotificationsActive sx={{ fontSize: 16 }} />,      label: 'Alerts',              question: 'What to watch?' },
 ];
 
 interface Props {
@@ -36,102 +36,168 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
   return (
     <Box
       sx={{
-        width: 56,
+        width: 200,
         flexShrink: 0,
         height: '100vh',
         bgcolor: C.surface,
         borderRight: `1px solid ${C.border}`,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        pt: 1,
-        pb: 1,
         zIndex: 10,
+        overflow: 'hidden',
       }}
     >
-      {/* Brand icon — click to go home */}
-      <Tooltip title="Home" placement="right" arrow>
+      {/* Brand */}
+      <Box
+        onClick={onBackHome}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 1.5,
+          px: 2.25,
+          pt: 2,
+          pb: 1.75,
+          borderBottom: `1px solid ${C.border}`,
+          cursor: onBackHome ? 'pointer' : 'default',
+          flexShrink: 0,
+          transition: 'opacity 0.15s',
+          '&:hover': onBackHome ? { opacity: 0.8 } : {},
+        }}
+      >
         <Box
-          onClick={onBackHome}
           sx={{
-            width: 34,
-            height: 34,
-            borderRadius: '8px',
+            width: 28,
+            height: 28,
+            borderRadius: '7px',
             bgcolor: C.accent,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            mb: 2.5,
-            boxShadow: `0 0 14px ${C.accentGlow}`,
             flexShrink: 0,
-            cursor: onBackHome ? 'pointer' : 'default',
-            transition: 'opacity 0.15s ease',
-            '&:hover': onBackHome ? { opacity: 0.8 } : {},
+            boxShadow: `0 0 14px ${C.accentGlow}`,
           }}
         >
-          <SportsSoccer sx={{ fontSize: 18, color: '#000' }} />
+          <SportsSoccer sx={{ fontSize: 15, color: '#000' }} />
         </Box>
-      </Tooltip>
+        <Box>
+          <Typography
+            sx={{
+              fontSize: '0.68rem',
+              fontWeight: 800,
+              color: C.text1,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              fontFamily: 'monospace',
+              lineHeight: 1.15,
+            }}
+          >
+            Terminal
+          </Typography>
+          <Typography sx={{ fontSize: '0.54rem', color: C.text3, fontFamily: 'monospace', lineHeight: 1 }}>
+            Football Intelligence
+          </Typography>
+        </Box>
+      </Box>
+
+      {/* Section label */}
+      <Box sx={{ px: 2.25, pt: 2, pb: 0.75, flexShrink: 0 }}>
+        <Typography
+          sx={{
+            fontSize: '0.54rem',
+            color: C.text3,
+            fontFamily: 'monospace',
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+          }}
+        >
+          Pages
+        </Typography>
+      </Box>
 
       {/* Nav items */}
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, flex: 1 }}>
+      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 0.25, px: 1.25 }}>
         {NAV_ITEMS.map(item => {
           const isActive = active === item.id;
           return (
-            <Tooltip key={item.id} title={item.label} placement="right" arrow>
-              <IconButton
-                onClick={() => onSelect(item.id)}
+            <Box
+              key={item.id}
+              onClick={() => onSelect(item.id)}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1.25,
+                px: 1.25,
+                py: 0.9,
+                borderRadius: '6px',
+                borderLeft: `2px solid ${isActive ? C.accent : 'transparent'}`,
+                bgcolor: isActive ? C.accentDim : 'transparent',
+                cursor: 'pointer',
+                transition: 'all 0.12s ease',
+                '&:hover': {
+                  bgcolor: isActive ? C.accentDim : 'rgba(255,255,255,0.04)',
+                  borderLeftColor: isActive ? C.accent : C.borderLight,
+                },
+              }}
+            >
+              <Box sx={{ color: isActive ? C.accent : C.text3, display: 'flex', flexShrink: 0 }}>
+                {item.icon}
+              </Box>
+              <Typography
                 sx={{
-                  width: 38,
-                  height: 38,
-                  color: isActive ? C.accent : C.text3,
-                  bgcolor: isActive ? C.accentDim : 'transparent',
-                  boxShadow: isActive ? `inset 0 0 0 1px ${C.accentDim}` : 'none',
-                  '&:hover': {
-                    bgcolor: isActive ? C.accentDim : 'rgba(255,255,255,0.05)',
-                    color: isActive ? C.accentBright : C.text2,
-                  },
-                  transition: 'all 0.15s ease',
+                  fontSize: '0.75rem',
+                  fontWeight: isActive ? 600 : 400,
+                  color: isActive ? C.accent : C.text2,
+                  transition: 'color 0.12s ease',
+                  whiteSpace: 'nowrap',
                 }}
               >
-                {item.icon}
-              </IconButton>
-            </Tooltip>
+                {item.label}
+              </Typography>
+            </Box>
           );
         })}
       </Box>
 
-      <Divider sx={{ width: 32, my: 1, borderColor: C.border }} />
+      <Divider sx={{ borderColor: C.border, mx: 1.25, my: 0.5 }} />
 
-      {onBackHome && (
-        <Tooltip title="Back to Home" placement="right" arrow>
-          <IconButton
+      {/* Bottom */}
+      <Box sx={{ px: 1.25, pb: 1.5, display: 'flex', flexDirection: 'column', gap: 0.25, flexShrink: 0 }}>
+        {onBackHome && (
+          <Box
             onClick={onBackHome}
             sx={{
-              width: 38,
-              height: 38,
-              color: C.text3,
-              mb: 0.5,
-              '&:hover': { color: C.text2, bgcolor: 'rgba(255,255,255,0.05)' },
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1.25,
+              px: 1.25,
+              py: 0.875,
+              borderRadius: '6px',
+              cursor: 'pointer',
+              transition: 'background-color 0.12s',
+              '&:hover': { bgcolor: 'rgba(255,255,255,0.04)' },
             }}
           >
-            <Home sx={{ fontSize: 18 }} />
-          </IconButton>
-        </Tooltip>
-      )}
-
-      <Tooltip title="Settings" placement="right" arrow>
-        <IconButton
+            <Home sx={{ fontSize: 16, color: C.text3 }} />
+            <Typography sx={{ fontSize: '0.75rem', color: C.text2 }}>Home</Typography>
+          </Box>
+        )}
+        <Box
           sx={{
-            width: 38,
-            height: 38,
-            color: C.text3,
-            '&:hover': { color: C.text2, bgcolor: 'rgba(255,255,255,0.05)' },
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.25,
+            px: 1.25,
+            py: 0.875,
+            borderRadius: '6px',
+            cursor: 'pointer',
+            transition: 'background-color 0.12s',
+            '&:hover': { bgcolor: 'rgba(255,255,255,0.04)' },
           }}
         >
-          <Settings sx={{ fontSize: 18 }} />
-        </IconButton>
-      </Tooltip>
+          <Settings sx={{ fontSize: 16, color: C.text3 }} />
+          <Typography sx={{ fontSize: '0.75rem', color: C.text2 }}>Settings</Typography>
+        </Box>
+      </Box>
     </Box>
   );
 }

@@ -177,14 +177,14 @@ export default function LiveSignalsPage() {
   }, [activeFilter, search]);
 
   return (
-    <Box sx={{ flex: 1, overflow: 'auto', p: 3 }}>
+    <Box sx={{ flex: 1, overflow: 'auto', p: { xs: 3, md: 4 } }}>
       <PageHeader
         title="Live Signals"
         subtitle="What happened? Every signal that shifted an outcome."
       />
 
       {/* Filters + search */}
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2.5, flexWrap: 'wrap' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3, flexWrap: 'wrap' }}>
         <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
           {FILTERS.map(f => (
             <FilterChip
@@ -235,7 +235,7 @@ export default function LiveSignalsPage() {
       </Box>
 
       {/* Signal count */}
-      <Typography sx={{ fontSize: '0.65rem', color: C.text3, fontFamily: 'monospace', mb: 1.5 }}>
+      <Typography sx={{ fontSize: '0.65rem', color: C.text3, fontFamily: 'monospace', mb: 2 }}>
         {filtered.length} SIGNAL{filtered.length !== 1 ? 'S' : ''} · SORTED BY IMPACT
       </Typography>
 

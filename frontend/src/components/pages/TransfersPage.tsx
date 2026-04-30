@@ -128,14 +128,14 @@ export default function TransfersPage() {
   });
 
   return (
-    <Box sx={{ flex: 1, overflow: 'auto', p: 3 }}>
+    <Box sx={{ flex: 1, overflow: 'auto', p: { xs: 3, md: 4 } }}>
       <PageHeader
         title="Transfers"
         subtitle="Which moves are becoming more likely? Probability velocity across the market."
       />
 
       {/* Summary row */}
-      <Box sx={{ display: 'flex', gap: 1.5, mb: 3, flexWrap: 'wrap' }}>
+      <Box sx={{ display: 'flex', gap: 1.5, mb: 3.5, flexWrap: 'wrap' }}>
         {(['exploding', 'heating_up', 'moving', 'cooling'] as TransferStatus[]).map(status => {
           const count = TRANSFER_RUMOURS.filter(t => t.status === status).length;
           if (count === 0) return null;
@@ -149,7 +149,7 @@ export default function TransfersPage() {
       </Box>
 
       {/* Cards grid */}
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr', xl: '1fr 1fr 1fr' }, gap: 2 }}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr', xl: '1fr 1fr 1fr' }, gap: 3 }}>
         {sorted.map(t => (
           <TransferCard key={t.id} transfer={t} />
         ))}

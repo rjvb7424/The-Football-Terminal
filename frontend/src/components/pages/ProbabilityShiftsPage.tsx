@@ -160,14 +160,14 @@ export default function ProbabilityShiftsPage() {
     });
 
   return (
-    <Box sx={{ flex: 1, overflow: 'auto', p: 3 }}>
+    <Box sx={{ flex: 1, overflow: 'auto', p: { xs: 3, md: 4 } }}>
       <PageHeader
         title="Probability Shifts"
         subtitle="What changed because of it? Every outcome that moved in the last 24h."
       />
 
       {/* Category filters */}
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5, flexWrap: 'wrap' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2, flexWrap: 'wrap' }}>
         {CATEGORIES.map(c => (
           <FilterChip key={c.id} label={c.label} active={category === c.id} onClick={() => setCategory(c.id)} />
         ))}
@@ -183,12 +183,12 @@ export default function ProbabilityShiftsPage() {
       </Box>
 
       {/* Count */}
-      <Typography sx={{ fontSize: '0.65rem', color: C.text3, fontFamily: 'monospace', mb: 2 }}>
+      <Typography sx={{ fontSize: '0.65rem', color: C.text3, fontFamily: 'monospace', mb: 2.5 }}>
         {filtered.length} SHIFT{filtered.length !== 1 ? 'S' : ''}
       </Typography>
 
       {/* Cards grid */}
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr', xl: '1fr 1fr 1fr' }, gap: 2 }}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr', xl: '1fr 1fr 1fr' }, gap: 3 }}>
         {filtered.map(shift => (
           <ShiftCard key={shift.id} shift={shift} />
         ))}

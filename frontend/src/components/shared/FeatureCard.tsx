@@ -18,7 +18,7 @@ export default function FeatureCard({ title, titleRight, children, accent, noPad
       className="panel-lift"
       sx={{
         bgcolor: C.surface,
-        border: `1px solid ${accent ? 'rgba(0,180,216,0.25)' : C.border}`,
+        border: `1px solid ${accent ? 'rgba(0,180,216,0.22)' : C.border}`,
         borderRadius: '8px',
         overflow: 'hidden',
         display: 'flex',
@@ -32,8 +32,8 @@ export default function FeatureCard({ title, titleRight, children, accent, noPad
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            px: 2,
-            py: 1.25,
+            px: 2.5,
+            py: 1.5,
             borderBottom: `1px solid ${C.border}`,
             bgcolor: C.card,
             flexShrink: 0,
@@ -41,11 +41,11 @@ export default function FeatureCard({ title, titleRight, children, accent, noPad
         >
           <Typography
             sx={{
-              fontSize: '0.68rem',
+              fontSize: '0.65rem',
               fontWeight: 700,
-              color: accent ? C.accent : C.text2,
+              color: accent ? C.accent : C.text3,
               fontFamily: 'monospace',
-              letterSpacing: '0.08em',
+              letterSpacing: '0.1em',
               textTransform: 'uppercase',
             }}
           >
@@ -54,7 +54,7 @@ export default function FeatureCard({ title, titleRight, children, accent, noPad
           {titleRight}
         </Box>
       )}
-      <Box sx={{ flex: 1, p: noPadding ? 0 : 2, overflow: 'hidden' }}>{children}</Box>
+      <Box sx={{ flex: 1, p: noPadding ? 0 : 2.5, overflow: 'hidden' }}>{children}</Box>
     </Box>
   );
 }

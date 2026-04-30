@@ -189,7 +189,7 @@ export default function AlertsPage() {
   const totalActive = ALERTS.filter(a => a.priority === 'critical' || a.priority === 'high').length;
 
   return (
-    <Box sx={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', p: 3 }}>
+    <Box sx={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', p: { xs: 3, md: 4 } }}>
       <PageHeader
         title="Alerts"
         subtitle="What should you be notified about? Your watchlist, live."
@@ -203,11 +203,11 @@ export default function AlertsPage() {
         }
       />
 
-      <Box sx={{ display: 'flex', gap: 2, flex: 1, overflow: 'hidden', minHeight: 0 }}>
+      <Box sx={{ display: 'flex', gap: 3, flex: 1, overflow: 'hidden', minHeight: 0 }}>
         {/* Alert feed */}
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
           {/* Filters */}
-          <Box sx={{ display: 'flex', gap: 1, mb: 1.5, flexWrap: 'wrap' }}>
+          <Box sx={{ display: 'flex', gap: 1, mb: 2, flexWrap: 'wrap' }}>
             {PRIORITY_FILTERS.map(f => (
               <FilterChip key={f.id} label={f.label} active={priority === f.id} onClick={() => setPriority(f.id)} />
             ))}
@@ -217,7 +217,7 @@ export default function AlertsPage() {
             ))}
           </Box>
 
-          <Typography sx={{ fontSize: '0.62rem', color: C.text3, fontFamily: 'monospace', mb: 1 }}>
+          <Typography sx={{ fontSize: '0.62rem', color: C.text3, fontFamily: 'monospace', mb: 1.5 }}>
             {filtered.length} ALERT{filtered.length !== 1 ? 'S' : ''}
           </Typography>
 

@@ -93,7 +93,7 @@ function MatchDetail({ match }: { match: Match }) {
   const sign = preDelta >= 0 ? '+' : '';
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
       {/* Win probability summary */}
       <FeatureCard title="Win Probabilities">
         <Box sx={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 2, alignItems: 'center' }}>
@@ -188,15 +188,15 @@ export default function LiveMatchesPage() {
   const upcoming = MATCHES.filter(m => m.status === 'upcoming');
 
   return (
-    <Box sx={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', p: 3 }}>
+    <Box sx={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', p: { xs: 3, md: 4 } }}>
       <PageHeader
         title="Live Matches"
         subtitle="How is the match changing live? Probability shifts in real time."
       />
 
-      <Box sx={{ display: 'flex', gap: 2, flex: 1, overflow: 'hidden', minHeight: 0 }}>
+      <Box sx={{ display: 'flex', gap: 3, flex: 1, overflow: 'hidden', minHeight: 0 }}>
         {/* Left: match list */}
-        <Box sx={{ width: 300, flexShrink: 0, overflow: 'auto', display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+        <Box sx={{ width: 300, flexShrink: 0, overflow: 'auto', display: 'flex', flexDirection: 'column', gap: 2 }}>
           {live.length > 0 && (
             <>
               <Typography sx={{ fontSize: '0.6rem', color: C.positive, fontFamily: 'monospace', letterSpacing: '0.08em' }}>LIVE NOW</Typography>
@@ -218,7 +218,7 @@ export default function LiveMatchesPage() {
         {/* Right: detail */}
         <Box sx={{ flex: 1, overflow: 'auto' }}>
           {/* Match header */}
-          <Box sx={{ mb: 2, p: 2, bgcolor: C.surface, border: `1px solid ${C.border}`, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Box sx={{ mb: 3, p: 2.5, bgcolor: C.surface, border: `1px solid ${C.border}`, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <Box>
               <Typography sx={{ fontSize: '0.6rem', color: C.text3, fontFamily: 'monospace', mb: 0.5 }}>{selected.competition}</Typography>
               <Typography sx={{ fontSize: '1.1rem', fontWeight: 800, color: C.text1 }}>

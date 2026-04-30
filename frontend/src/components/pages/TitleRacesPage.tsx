@@ -60,20 +60,20 @@ export default function TitleRacesPage() {
   const maxProb = Math.max(...race.teams.map(t => t.probability));
 
   return (
-    <Box sx={{ flex: 1, overflow: 'auto', p: 3 }}>
+    <Box sx={{ flex: 1, overflow: 'auto', p: { xs: 3, md: 4 } }}>
       <PageHeader
         title="Title Races"
         subtitle="Who is gaining or losing the race? Probability shifts across competitions."
       />
 
       {/* League chips */}
-      <Box sx={{ display: 'flex', gap: 1, mb: 3, flexWrap: 'wrap' }}>
+      <Box sx={{ display: 'flex', gap: 1, mb: 3.5, flexWrap: 'wrap' }}>
         {TITLE_RACES.map(r => (
           <FilterChip key={r.id} label={r.league} active={activeLeague === r.id} onClick={() => setActiveLeague(r.id)} />
         ))}
       </Box>
 
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' }, gap: 2 }}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' }, gap: 3 }}>
         {/* Probability table */}
         <FeatureCard
           title={`${race.league} — Title Probabilities`}
@@ -101,7 +101,7 @@ export default function TitleRacesPage() {
                   key={team.club}
                   sx={{
                     px: 2,
-                    py: 1.5,
+                    py: 2,
                     borderBottom: `1px solid ${C.border}`,
                     '&:last-child': { borderBottom: 'none' },
                     '&:hover': { bgcolor: 'rgba(255,255,255,0.02)' },
@@ -119,7 +119,7 @@ export default function TitleRacesPage() {
                     <Typography sx={{ fontSize: '0.75rem', fontFamily: 'monospace', fontWeight: 700, color: changeColor, width: 50, textAlign: 'right' }}>
                       {changeSign}{team.change}pp
                     </Typography>
-                    <Box sx={{ display: 'flex', gap: 0.35, width: 60, justifyContent: 'flex-end' }}>
+                    <Box sx={{ display: 'flex', gap: 0.4, width: 60, justifyContent: 'flex-end' }}>
                       {team.form.slice(-5).map((r, i) => <FormBadge key={i} result={r} />)}
                     </Box>
                   </Box>
