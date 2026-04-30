@@ -11,6 +11,7 @@ import LandingPage from './components/pages/LandingPage';
 import OverviewPage from './components/pages/OverviewPage';
 import LiveSignalsPage from './components/pages/LiveSignalsPage';
 import ProbabilityShiftsPage from './components/pages/ProbabilityShiftsPage';
+import SituationMapPage from './components/pages/SituationMapPage';
 import LiveMatchesPage from './components/pages/LiveMatchesPage';
 import TitleRacesPage from './components/pages/TitleRacesPage';
 import TransfersPage from './components/pages/TransfersPage';
@@ -46,6 +47,7 @@ export default function App() {
       case 'overview':   return <OverviewPage shockActive={shockActive} />;
       case 'signals':    return <LiveSignalsPage />;
       case 'shifts':     return <ProbabilityShiftsPage />;
+      case 'map':        return <SituationMapPage />;
       case 'matches':    return <LiveMatchesPage />;
       case 'titles':     return <TitleRacesPage />;
       case 'transfers':  return <TransfersPage />;
