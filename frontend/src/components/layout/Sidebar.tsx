@@ -73,7 +73,8 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
             width: 28,
             height: 28,
             borderRadius: '7px',
-            bgcolor: C.accent,
+            background: `linear-gradient(135deg, ${C.accent} 0%, rgba(46,230,200,0.16) 78%)`,
+            border: `1px solid rgba(46,230,200,0.34)`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -81,7 +82,7 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
           boxShadow: 'none',
           }}
         >
-          <SportsSoccer sx={{ fontSize: 15, color: '#000' }} />
+          <SportsSoccer sx={{ fontSize: 15, color: C.bg }} />
         </Box>
         <Box>
           <Typography
@@ -95,10 +96,10 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
               lineHeight: 1.15,
             }}
           >
-            Terminal
+            TFT
           </Typography>
           <Typography sx={{ fontSize: '0.54rem', color: C.text3, fontFamily: 'monospace', lineHeight: 1 }}>
-            Football Intelligence
+            Signal Room
           </Typography>
         </Box>
       </Box>
@@ -134,11 +135,11 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
                 py: 0.82,
                 borderRadius: '6px',
                 borderLeft: `1px solid ${isActive ? C.accent : 'transparent'}`,
-                bgcolor: isActive ? 'rgba(0,180,216,0.08)' : 'transparent',
+                bgcolor: isActive ? 'rgba(46,230,200,0.08)' : 'transparent',
                 cursor: 'pointer',
                 transition: 'all 0.12s ease',
                 '&:hover': {
-                  bgcolor: isActive ? 'rgba(0,180,216,0.08)' : 'rgba(255,255,255,0.03)',
+                  bgcolor: isActive ? 'rgba(46,230,200,0.08)' : 'rgba(255,255,255,0.03)',
                   borderLeftColor: isActive ? C.accent : C.borderLight,
                 },
               }}

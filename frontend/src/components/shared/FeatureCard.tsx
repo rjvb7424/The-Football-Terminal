@@ -18,11 +18,27 @@ export default function FeatureCard({ title, titleRight, children, accent, noPad
       className="panel-lift"
       sx={{
         bgcolor: C.surface,
-        border: `1px solid ${accent ? 'rgba(0,180,216,0.2)' : 'rgba(255,255,255,0.06)'}`,
+        border: `1px solid ${accent ? 'rgba(46,230,200,0.2)' : 'rgba(255,255,255,0.06)'}`,
         borderRadius: '8px',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
+        position: 'relative',
+        ...(accent
+          ? {
+              background: `linear-gradient(135deg, rgba(46,230,200,0.055), ${C.surface} 34%, ${C.surface})`,
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                bottom: 0,
+                width: 2,
+                bgcolor: C.accent,
+                opacity: 0.86,
+              },
+            }
+          : {}),
         ...sx,
       }}
     >

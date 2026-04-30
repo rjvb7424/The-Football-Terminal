@@ -12,12 +12,12 @@ function MatchCard({ match, selected, onClick }: { match: Match; selected: boole
       onClick={onClick}
       sx={{
         p: 3,
-        border: `1px solid ${selected ? 'rgba(0,180,216,0.34)' : 'rgba(255,255,255,0.06)'}`,
+        border: `1px solid ${selected ? 'rgba(46,230,200,0.34)' : 'rgba(255,255,255,0.06)'}`,
         borderRadius: '9px',
-        bgcolor: selected ? 'rgba(0,180,216,0.055)' : C.surface,
+        bgcolor: selected ? 'rgba(46,230,200,0.055)' : C.surface,
         textAlign: 'left',
         cursor: 'pointer',
-        '&:hover': { borderColor: selected ? 'rgba(0,180,216,0.42)' : 'rgba(255,255,255,0.12)' },
+        '&:hover': { borderColor: selected ? 'rgba(46,230,200,0.42)' : 'rgba(255,255,255,0.12)' },
       }}
     >
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>

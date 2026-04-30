@@ -7,7 +7,7 @@ html, body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  background: #080b0f;
+  background: #050807;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,7 +26,7 @@ html, body {
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
-::-webkit-scrollbar-track { background: #0d1117; }
+::-webkit-scrollbar-track { background: #0c1210; }
 ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #484f58; }
 
@@ -40,19 +40,19 @@ html, body {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #3fb950;
+  background: #54d66f;
   display: inline-block;
   animation: pulse-live 2.6s ease-in-out infinite;
   box-shadow: none;
 }
 
 .live-dot-red {
-  background: #f85149;
+  background: #ff5f5f;
   box-shadow: none;
 }
 
 .live-dot-amber {
-  background: #d29922;
+  background: #d7a84a;
   box-shadow: none;
 }
 
@@ -84,15 +84,15 @@ html, body {
 
 /* Glow effects */
 .glow-cyan {
-  box-shadow: 0 0 0 1px rgba(0,180,216,0.4), 0 0 12px rgba(0,180,216,0.15);
+  box-shadow: 0 0 0 1px rgba(46,230,200,0.34), 0 0 12px rgba(46,230,200,0.12);
 }
 
 .glow-green {
-  box-shadow: 0 0 0 1px rgba(63,185,80,0.4), 0 0 12px rgba(63,185,80,0.15);
+  box-shadow: 0 0 0 1px rgba(84,214,111,0.34), 0 0 12px rgba(84,214,111,0.12);
 }
 
 .glow-red {
-  box-shadow: 0 0 0 1px rgba(248,81,73,0.4), 0 0 12px rgba(248,81,73,0.15);
+  box-shadow: 0 0 0 1px rgba(255,95,95,0.34), 0 0 12px rgba(255,95,95,0.12);
 }
 
 /* Monospace numbers */
@@ -108,8 +108,8 @@ html, body {
 
 /* Shock animation */
 @keyframes shock-flash {
-  0% { background-color: rgba(248,81,73,0.3); }
-  50% { background-color: rgba(248,81,73,0.05); }
+  0% { background-color: rgba(255,95,95,0.24); }
+  50% { background-color: rgba(255,95,95,0.05); }
   100% { background-color: transparent; }
 }
 

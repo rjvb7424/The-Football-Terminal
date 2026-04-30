@@ -20,14 +20,14 @@ function resolveColors(variant: Variant): { bg: string; border: string; text: st
     case 'live':
     case 'confirmed':
     case 'positive':
-      return { bg: C.positiveDim, border: `rgba(63,185,80,0.3)`, text: C.positive };
+      return { bg: C.positiveDim, border: `rgba(84,214,111,0.3)`, text: C.positive };
 
     case 'exploding':
     case 'heating_up':
     case 'critical':
     case 'red_card':
     case 'negative':
-      return { bg: C.negativeDim, border: `rgba(248,81,73,0.3)`, text: C.negative };
+      return { bg: C.negativeDim, border: `rgba(255,95,95,0.3)`, text: C.negative };
 
     case 'rumour':
     case 'moving':
@@ -35,26 +35,26 @@ function resolveColors(variant: Variant): { bg: string; border: string; text: st
     case 'market':
     case 'amber':
     case 'high':
-      return { bg: C.amberDim, border: `rgba(210,153,34,0.3)`, text: C.amber };
+      return { bg: C.amberDim, border: `rgba(215,168,74,0.3)`, text: C.amber };
 
     case 'lineup':
     case 'tactical':
-      return { bg: C.accentDim, border: `rgba(0,180,216,0.3)`, text: C.accent };
+      return { bg: C.accentDim, border: `rgba(46,230,200,0.3)`, text: C.accent };
 
     case 'cooling':
     case 'quiet':
     case 'low':
     case 'sentiment':
-      return { bg: 'rgba(72,79,88,0.25)', border: `rgba(72,79,88,0.4)`, text: C.text3 };
+      return { bg: 'rgba(95,107,101,0.2)', border: `rgba(95,107,101,0.34)`, text: C.text3 };
 
     case 'injury':
-      return { bg: C.negativeDim, border: `rgba(248,81,73,0.3)`, text: C.negative };
+      return { bg: C.negativeDim, border: `rgba(255,95,95,0.3)`, text: C.negative };
 
     case 'medium':
-      return { bg: 'rgba(0,180,216,0.08)', border: `rgba(0,180,216,0.2)`, text: C.accent };
+      return { bg: 'rgba(46,230,200,0.08)', border: `rgba(46,230,200,0.2)`, text: C.accent };
 
     default:
-      return { bg: C.accentDim, border: `rgba(0,180,216,0.2)`, text: C.text2 };
+      return { bg: C.accentDim, border: `rgba(46,230,200,0.2)`, text: C.text2 };
   }
 }
 

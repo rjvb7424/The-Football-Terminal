@@ -14,9 +14,9 @@ function LeagueButton({ label, active, onClick }: { label: string; active: boole
       sx={{
         px: 1.4,
         py: 0.65,
-        border: `1px solid ${active ? 'rgba(0,180,216,0.42)' : 'rgba(255,255,255,0.07)'}`,
+        border: `1px solid ${active ? 'rgba(46,230,200,0.42)' : 'rgba(255,255,255,0.07)'}`,
         borderRadius: '7px',
-        bgcolor: active ? 'rgba(0,180,216,0.08)' : 'transparent',
+        bgcolor: active ? 'rgba(46,230,200,0.08)' : 'transparent',
         color: active ? C.accent : C.text2,
         fontSize: '0.72rem',
         cursor: 'pointer',

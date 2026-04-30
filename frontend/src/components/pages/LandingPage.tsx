@@ -12,17 +12,32 @@ function PreviewCard() {
       sx={{
         width: 380,
         maxWidth: '100%',
-        bgcolor: 'rgba(13,17,23,0.82)',
-        border: `1px solid rgba(255,255,255,0.08)`,
-        borderRadius: '10px',
+        bgcolor: 'rgba(12,18,16,0.9)',
+        border: `1px solid rgba(46,230,200,0.16)`,
+        borderRadius: '12px',
         p: 3,
-        boxShadow: '0 30px 90px rgba(0,0,0,0.34)',
+        boxShadow: '0 30px 90px rgba(0,0,0,0.4)',
+        position: 'relative',
+        overflow: 'hidden',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          borderTop: `2px solid ${C.accent}`,
+          opacity: 0.72,
+          pointerEvents: 'none',
+        },
       }}
     >
-      <Typography sx={{ fontSize: '0.68rem', color: C.text3, fontFamily: 'monospace', letterSpacing: '0.08em', mb: 2 }}>
-        FEATURED SHIFT
-      </Typography>
-      <Typography sx={{ fontSize: '1.05rem', color: C.text1, fontWeight: 750, mb: 2.5 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
+        <Typography sx={{ fontSize: '0.68rem', color: C.accent, fontFamily: 'monospace', letterSpacing: '0.08em', fontWeight: 800 }}>
+          TERMINAL SIGNAL
+        </Typography>
+        <Typography sx={{ fontSize: '0.64rem', color: C.negative, fontFamily: 'monospace', letterSpacing: '0.08em' }}>
+          INJURY
+        </Typography>
+      </Box>
+      <Typography sx={{ fontSize: '1.1rem', color: C.text1, fontWeight: 780, mb: 2.5 }}>
         Mbappé training absence
       </Typography>
       <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1.25, mb: 2 }}>
@@ -37,9 +52,48 @@ function PreviewCard() {
       <Typography sx={{ fontSize: '0.78rem', color: C.text2, lineHeight: 1.7, mb: 2.5 }}>
         Real Madrid title probability recalculated after a second consecutive missed final session.
       </Typography>
-      <Typography sx={{ fontSize: '0.66rem', color: C.text3, fontFamily: 'monospace' }}>
-        Detected 2 min ago
-      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
+        <Typography sx={{ fontSize: '0.66rem', color: C.text3, fontFamily: 'monospace' }}>
+          Detected 2 min ago
+        </Typography>
+        <Typography sx={{ fontSize: '0.66rem', color: C.text3, fontFamily: 'monospace' }}>
+          Confidence 76%
+        </Typography>
+      </Box>
+    </Box>
+  );
+}
+
+function BrandMark() {
+  return (
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.1 }}>
+      <Box
+        sx={{
+          width: 24,
+          height: 24,
+          borderRadius: '7px',
+          border: `1px solid rgba(46,230,200,0.38)`,
+          background: `linear-gradient(135deg, ${C.accent} 0%, rgba(46,230,200,0.12) 72%)`,
+          position: 'relative',
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            left: 6,
+            right: 6,
+            top: 11,
+            height: 1,
+            bgcolor: 'rgba(5,8,7,0.74)',
+          },
+        }}
+      />
+      <Box>
+        <Typography sx={{ fontFamily: 'monospace', fontWeight: 850, fontSize: '0.78rem', letterSpacing: '0.12em', color: C.text1, textTransform: 'uppercase', lineHeight: 1 }}>
+          The Football Terminal
+        </Typography>
+        <Typography sx={{ fontSize: '0.58rem', color: C.text3, fontFamily: 'monospace', letterSpacing: '0.08em', mt: 0.35 }}>
+          SIGNAL ROOM
+        </Typography>
+      </Box>
     </Box>
   );
 }
@@ -54,12 +108,14 @@ export default function LandingPage({ onEnterDashboard }: Props) {
         bgcolor: C.bg,
         display: 'flex',
         flexDirection: 'column',
+        background: `
+          radial-gradient(circle at 74% 40%, rgba(46,230,200,0.08), transparent 28%),
+          linear-gradient(135deg, ${C.bg} 0%, #07100d 52%, ${C.bg} 100%)
+        `,
       }}
     >
       <Box sx={{ px: { xs: 3, md: 6 }, py: 3, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Typography sx={{ fontFamily: 'monospace', fontWeight: 850, fontSize: '0.78rem', letterSpacing: '0.12em', color: C.text1, textTransform: 'uppercase' }}>
-          The Football Terminal
-        </Typography>
+        <BrandMark />
         <Box
           component="button"
           onClick={onEnterDashboard}
@@ -69,7 +125,7 @@ export default function LandingPage({ onEnterDashboard }: Props) {
             border: 0,
             borderRadius: '7px',
             bgcolor: C.accent,
-            color: '#001014',
+            color: C.bg,
             fontSize: '0.72rem',
             fontFamily: 'monospace',
             fontWeight: 850,
@@ -96,7 +152,7 @@ export default function LandingPage({ onEnterDashboard }: Props) {
       >
         <Box sx={{ maxWidth: 650 }}>
           <Typography sx={{ fontSize: '0.72rem', color: C.accent, fontFamily: 'monospace', letterSpacing: '0.1em', mb: 3, fontWeight: 800 }}>
-            LIVE FOOTBALL INTELLIGENCE
+            SIGNALS BEFORE STORIES
           </Typography>
           <Typography
             sx={{
@@ -122,7 +178,7 @@ export default function LandingPage({ onEnterDashboard }: Props) {
               border: 0,
               borderRadius: '7px',
               bgcolor: C.accent,
-              color: '#001014',
+              color: C.bg,
               fontSize: '0.78rem',
               fontFamily: 'monospace',
               fontWeight: 850,

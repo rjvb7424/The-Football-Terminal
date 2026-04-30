@@ -11,8 +11,9 @@ interface Props {
 }
 
 function TypeLabel({ children }: { children: string }) {
+  const color = children === 'rumour' ? C.amber : children === 'injury' ? C.negative : C.accent;
   return (
-    <Typography sx={{ fontSize: '0.64rem', color: C.text3, fontFamily: 'monospace', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+    <Typography sx={{ fontSize: '0.64rem', color, fontFamily: 'monospace', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 850 }}>
       {children}
     </Typography>
   );
@@ -26,9 +27,12 @@ function FeaturedShift({ shockActive }: Props) {
   const sign = impact > 0 ? '+' : '';
 
   return (
-    <FeatureCard accent>
+    <FeatureCard accent sx={{ minHeight: 330 }}>
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '1fr auto' }, gap: { xs: 4, lg: 6 }, alignItems: 'end' }}>
         <Box>
+          <Typography sx={{ fontSize: '0.66rem', color: C.accent, fontFamily: 'monospace', letterSpacing: '0.1em', mb: 2, fontWeight: 850 }}>
+            FEATURED INTELLIGENCE
+          </Typography>
           <TypeLabel>{sig.eventType}</TypeLabel>
           <Typography sx={{ mt: 1.2, fontSize: { xs: '1.7rem', md: '2.25rem' }, fontWeight: 850, color: C.text1, lineHeight: 1.05, letterSpacing: '-0.03em' }}>
             {sig.title}
@@ -58,7 +62,7 @@ function FeaturedShift({ shockActive }: Props) {
               '& .MuiLinearProgress-bar': { bgcolor: color },
             }}
           />
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1.25 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1.25, gap: 2, flexWrap: 'wrap' }}>
             <Typography sx={{ fontSize: '0.72rem', color, fontFamily: 'monospace', fontWeight: 800 }}>
               {sign}{impact}pp impact
             </Typography>

@@ -45,7 +45,7 @@ export default function ChatPage() {
                 py: 1.5,
                 border: 0,
                 borderTop: `1px solid rgba(255,255,255,0.055)`,
-                bgcolor: item.id === channel.id ? 'rgba(0,180,216,0.08)' : 'transparent',
+                bgcolor: item.id === channel.id ? 'rgba(46,230,200,0.08)' : 'transparent',
                 color: item.id === channel.id ? C.accent : C.text2,
                 textAlign: 'left',
                 cursor: 'pointer',
@@ -74,7 +74,7 @@ export default function ChatPage() {
                       {user.name}
                     </Typography>
                   )}
-                  <Box sx={{ px: 1.6, py: 1.15, borderRadius: '8px', bgcolor: message.isSystem ? 'rgba(248,81,73,0.1)' : isMe ? 'rgba(0,180,216,0.1)' : C.card }}>
+                  <Box sx={{ px: 1.6, py: 1.15, borderRadius: '8px', bgcolor: message.isSystem ? 'rgba(255,95,95,0.1)' : isMe ? 'rgba(46,230,200,0.1)' : C.card }}>
                     <Typography sx={{ fontSize: '0.82rem', color: message.isSystem ? C.text1 : C.text2, lineHeight: 1.65 }}>
                       {message.content}
                     </Typography>
@@ -108,7 +108,7 @@ export default function ChatPage() {
                 },
               }}
             />
-            <IconButton onClick={send} disabled={!draft.trim()} sx={{ width: 40, height: 40, borderRadius: '8px', bgcolor: draft.trim() ? C.accent : C.border, color: draft.trim() ? '#001014' : C.text3, '&:hover': { bgcolor: draft.trim() ? C.accentBright : C.borderLight } }}>
+            <IconButton onClick={send} disabled={!draft.trim()} sx={{ width: 40, height: 40, borderRadius: '8px', bgcolor: draft.trim() ? C.accent : C.border, color: draft.trim() ? '#050807' : C.text3, '&:hover': { bgcolor: draft.trim() ? C.accentBright : C.borderLight } }}>
               <Send sx={{ fontSize: 17 }} />
             </IconButton>
           </Box>

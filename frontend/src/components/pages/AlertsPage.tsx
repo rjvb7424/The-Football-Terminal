@@ -24,9 +24,9 @@ export default function AlertsPage() {
             sx={{
               px: 1.35,
               py: 0.6,
-              border: `1px solid ${priority === item ? 'rgba(0,180,216,0.42)' : 'rgba(255,255,255,0.07)'}`,
+              border: `1px solid ${priority === item ? 'rgba(46,230,200,0.42)' : 'rgba(255,255,255,0.07)'}`,
               borderRadius: '7px',
-              bgcolor: priority === item ? 'rgba(0,180,216,0.08)' : 'transparent',
+              bgcolor: priority === item ? 'rgba(46,230,200,0.08)' : 'transparent',
               color: priority === item ? C.accent : C.text2,
               fontSize: '0.72rem',
               textTransform: 'capitalize',

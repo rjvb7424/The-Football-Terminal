@@ -14,7 +14,7 @@ export default function TopHeader({ onBackHome }: Props) {
     <Box
       sx={{
         height: 58,
-        bgcolor: 'rgba(8,11,15,0.86)',
+        bgcolor: 'rgba(5,8,7,0.86)',
         borderBottom: `1px solid rgba(255,255,255,0.06)`,
         display: 'flex',
         alignItems: 'center',
@@ -43,9 +43,9 @@ export default function TopHeader({ onBackHome }: Props) {
         </Typography>
       </Box>
 
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.65, flexShrink: 0 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.65, flexShrink: 0, px: 1, py: 0.45, border: `1px solid rgba(84,214,111,0.18)`, borderRadius: '999px', bgcolor: 'rgba(84,214,111,0.045)' }}>
         <Box component="span" className="live-dot" />
-        <Typography sx={{ fontSize: '0.65rem', color: C.text2, fontFamily: 'monospace', letterSpacing: '0.06em' }}>
+        <Typography sx={{ fontSize: '0.62rem', color: C.positive, fontFamily: 'monospace', letterSpacing: '0.06em', fontWeight: 800 }}>
           LIVE
         </Typography>
       </Box>

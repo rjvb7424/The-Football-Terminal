@@ -26,13 +26,13 @@ export interface ChatChannel {
 }
 
 export const CHAT_USERS: Record<string, ChatUser> = {
-  xG_Analyst:   { id: 'xG_Analyst',   name: 'xG_Analyst',   initials: 'xG', color: '#00b4d8', role: 'Data Analyst',     isOnline: true },
-  TacticalNerd:  { id: 'TacticalNerd',  name: 'TacticalNerd',  initials: 'TN', color: '#3fb950', role: 'Tactics',          isOnline: true },
-  TransferGuru:  { id: 'TransferGuru',  name: 'TransferGuru',  initials: 'TG', color: '#d29922', role: 'Transfer Intel',   isOnline: true },
-  PressBoxMike:  { id: 'PressBoxMike',  name: 'PressBoxMike',  initials: 'PM', color: '#8b5cf6', role: 'Journalist',       isOnline: true },
-  DataFoot:      { id: 'DataFoot',      name: 'DataFoot',      initials: 'DF', color: '#f59e0b', role: 'Data Scientist',   isOnline: true },
-  SignalOps:     { id: 'SignalOps',     name: 'SignalOps',     initials: 'SO', color: '#f85149', role: 'Signal Trader',   isOnline: false },
-  me:            { id: 'me',            name: 'You',            initials: 'FT', color: '#00b4d8', role: 'Analyst',          isOnline: true },
+  xG_Analyst:   { id: 'xG_Analyst',   name: 'xG_Analyst',   initials: 'xG', color: '#2ee6c8', role: 'Data Analyst',     isOnline: true },
+  TacticalNerd:  { id: 'TacticalNerd',  name: 'TacticalNerd',  initials: 'TN', color: '#54d66f', role: 'Tactics',          isOnline: true },
+  TransferGuru:  { id: 'TransferGuru',  name: 'TransferGuru',  initials: 'TG', color: '#d7a84a', role: 'Transfer Intel',   isOnline: true },
+  PressBoxMike:  { id: 'PressBoxMike',  name: 'PressBoxMike',  initials: 'PM', color: '#a0aaa4', role: 'Journalist',       isOnline: true },
+  DataFoot:      { id: 'DataFoot',      name: 'DataFoot',      initials: 'DF', color: '#a0aaa4', role: 'Data Scientist',   isOnline: true },
+  SignalOps:     { id: 'SignalOps',     name: 'SignalOps',     initials: 'SO', color: '#ff5f5f', role: 'Signal Trader',   isOnline: false },
+  me:            { id: 'me',            name: 'You',            initials: 'FT', color: '#2ee6c8', role: 'Analyst',          isOnline: true },
 };
 
 export const CHANNELS: ChatChannel[] = [

@@ -4,28 +4,28 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     background: {
-      default: '#080b0f',
-      paper: '#0d1117',
+      default: '#050807',
+      paper: '#0c1210',
     },
     primary: {
-      main: '#00b4d8',
-      light: '#00d4ff',
+      main: '#2ee6c8',
+      light: '#75ffe9',
     },
     error: {
-      main: '#f85149',
+      main: '#ff5f5f',
     },
     success: {
-      main: '#3fb950',
+      main: '#54d66f',
     },
     warning: {
-      main: '#d29922',
+      main: '#d7a84a',
     },
     text: {
-      primary: '#e6edf3',
-      secondary: '#8b949e',
-      disabled: '#484f58',
+      primary: '#f1f5ef',
+      secondary: '#a0aaa4',
+      disabled: '#5f6b65',
     },
-    divider: '#21262d',
+    divider: '#1d2926',
   },
   typography: {
     fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
@@ -40,8 +40,8 @@ const theme = createTheme({
       defaultProps: { elevation: 0 },
       styleOverrides: {
         root: {
-          backgroundColor: '#161b22',
-          border: '1px solid #21262d',
+          backgroundColor: '#121917',
+          border: '1px solid #1d2926',
           borderRadius: 6,
         },
       },
@@ -68,20 +68,20 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 2,
-          backgroundColor: '#21262d',
+          backgroundColor: '#1d2926',
         },
       },
     },
     MuiDivider: {
       styleOverrides: {
-        root: { borderColor: '#21262d' },
+        root: { borderColor: '#1d2926' },
       },
     },
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          backgroundColor: '#1c2129',
-          border: '1px solid #30363d',
+          backgroundColor: '#17211e',
+          border: '1px solid #2c3a36',
           fontSize: '0.72rem',
         },
       },
