@@ -10,11 +10,12 @@ import SportsSoccerOutlined from '@mui/icons-material/SportsSoccerOutlined';
 import EmojiEvents from '@mui/icons-material/EmojiEvents';
 import SwapHoriz from '@mui/icons-material/SwapHoriz';
 import NotificationsActive from '@mui/icons-material/NotificationsActive';
+import Article from '@mui/icons-material/Article';
 import Settings from '@mui/icons-material/Settings';
 import Home from '@mui/icons-material/Home';
 import { C } from '../../colors';
 
-export type PageId = 'overview' | 'signals' | 'shifts' | 'matches' | 'titles' | 'transfers' | 'alerts';
+export type PageId = 'overview' | 'signals' | 'shifts' | 'matches' | 'titles' | 'transfers' | 'alerts' | 'news';
 
 const NAV_ITEMS: { id: PageId; icon: ReactElement; label: string; question: string }[] = [
   { id: 'overview',   icon: <Dashboard sx={{ fontSize: 16 }} />,                label: 'Overview',            question: 'What matters most?' },
@@ -24,6 +25,7 @@ const NAV_ITEMS: { id: PageId; icon: ReactElement; label: string; question: stri
   { id: 'titles',     icon: <EmojiEvents sx={{ fontSize: 16 }} />,              label: 'Title Races',         question: 'Who is winning?' },
   { id: 'transfers',  icon: <SwapHoriz sx={{ fontSize: 16 }} />,                label: 'Transfers',           question: 'What moves are live?' },
   { id: 'alerts',     icon: <NotificationsActive sx={{ fontSize: 16 }} />,      label: 'Alerts',              question: 'What to watch?' },
+  { id: 'news',       icon: <Article sx={{ fontSize: 16 }} />,                  label: 'News',                question: 'What\'s the story?' },
 ];
 
 interface Props {
