@@ -72,15 +72,15 @@ export default function TopHeader({ shockActive, onSimulateShock, onBackHome }: 
       </Box>
 
       {/* Live stats */}
-      <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2, flex: 1 }}>
-        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 0.75 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2, flex: 1, minWidth: 0 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 0.75, flexShrink: 0 }}>
           <span className="live-dot" />
           <Typography sx={{ fontSize: '0.7rem', color: C.text2, fontWeight: 600, letterSpacing: '0.04em' }}>
             LIVE
           </Typography>
         </Box>
 
-        <Typography sx={{ fontSize: '0.68rem', color: C.text3, fontFamily: 'monospace' }}>
+        <Typography sx={{ fontSize: '0.68rem', color: C.text3, fontFamily: 'monospace', display: { xs: 'none', lg: 'block' }, whiteSpace: 'nowrap' }}>
           Monitoring{' '}
           <Box component="span" sx={{ color: C.text1, fontWeight: 600 }}>128</Box>{' '}
           matches ·{' '}
@@ -101,6 +101,8 @@ export default function TopHeader({ shockActive, onSimulateShock, onBackHome }: 
             height: 18,
             letterSpacing: '0.06em',
             fontWeight: 700,
+            flexShrink: 0,
+            display: { xs: 'none', md: 'flex' },
           }}
         />
       </Box>

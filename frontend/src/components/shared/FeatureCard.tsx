@@ -54,7 +54,7 @@ export default function FeatureCard({ title, titleRight, children, accent, noPad
           {titleRight}
         </Box>
       )}
-      <Box sx={{ flex: 1, p: noPadding ? 0 : 2.5, overflow: 'hidden' }}>{children}</Box>
+      <Box sx={{ flex: 1, p: noPadding ? 0 : 2.5 }}>{children}</Box>
     </Box>
   );
 }

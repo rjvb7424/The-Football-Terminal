@@ -35,7 +35,7 @@ export default function DashboardLayout({
     >
       <Sidebar active={activePage} onSelect={onPageChange} onBackHome={onBackHome} />
 
-      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minWidth: 0 }}>
+      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minWidth: 0, minHeight: 0 }}>
         <TopHeader shockActive={shockActive} onSimulateShock={onSimulateShock} onBackHome={onBackHome} />
         <LiveTicker />
 

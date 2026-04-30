@@ -9,7 +9,7 @@ import StatusChip from '../shared/StatusChip';
 
 const STATUS_ORDER: TransferStatus[] = ['exploding', 'heating_up', 'moving', 'quiet', 'cooling'];
 
-function VelocityBar({ velocity }: { velocity: number }) {
+function VelocityBar({ velocity, hoursWindow }: { velocity: number; hoursWindow: number }) {
   const abs = Math.abs(velocity);
   const capped = Math.min(abs, 40);
   const pct = (capped / 40) * 100;
@@ -20,7 +20,7 @@ function VelocityBar({ velocity }: { velocity: number }) {
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
         <Typography sx={{ fontSize: '0.58rem', color: C.text3, fontFamily: 'monospace' }}>VELOCITY</Typography>
         <Typography sx={{ fontSize: '0.65rem', fontFamily: 'monospace', fontWeight: 700, color }}>
-          {velocity > 0 ? '+' : ''}{velocity}pp / {TRANSFER_RUMOURS.find(t => t.velocity === velocity)?.hoursWindow ?? 6}h
+          {velocity > 0 ? '+' : ''}{velocity}pp / {hoursWindow}h
         </Typography>
       </Box>
       <Box sx={{ position: 'relative', height: 5, bgcolor: C.border, borderRadius: 1, overflow: 'hidden' }}>
@@ -90,7 +90,7 @@ function TransferCard({ transfer }: { transfer: TransferRumour }) {
 
         {/* Velocity */}
         <Box sx={{ mb: 2 }}>
-          <VelocityBar velocity={transfer.velocity} />
+          <VelocityBar velocity={transfer.velocity} hoursWindow={transfer.hoursWindow} />
         </Box>
 
         {/* Confidence */}

@@ -166,16 +166,16 @@ export default function ProbabilityShiftsPage() {
         subtitle="What changed because of it? Every outcome that moved in the last 24h."
       />
 
-      {/* Category filters */}
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2, flexWrap: 'wrap' }}>
-        {CATEGORIES.map(c => (
-          <FilterChip key={c.id} label={c.label} active={category === c.id} onClick={() => setCategory(c.id)} />
-        ))}
-
-        <Box sx={{ flex: 1 }} />
+      {/* Category filters + sort */}
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2, mb: 2, flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+          {CATEGORIES.map(c => (
+            <FilterChip key={c.id} label={c.label} active={category === c.id} onClick={() => setCategory(c.id)} />
+          ))}
+        </Box>
 
         {/* Sort */}
-        <Box sx={{ display: 'flex', gap: 1 }}>
+        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
           {SORTS.map(s => (
             <FilterChip key={s.id} label={s.label} active={sort === s.id} onClick={() => setSort(s.id)} />
           ))}

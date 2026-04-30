@@ -43,8 +43,8 @@ export default function SignalRow({ signal, selected, onClick, compact }: Props)
         '&:last-child': { borderBottom: 'none' },
       }}
     >
-      {/* Signal type chip */}
-      <Box sx={{ flexShrink: 0 }}>
+      {/* Signal type chip — fixed width matches "TYPE" column header (70px) */}
+      <Box sx={{ width: 70, flexShrink: 0, display: 'flex', alignItems: 'center' }}>
         <StatusChip
           variant={signal.eventType === 'rumour' ? 'rumour' : signal.eventType as any}
           label={TYPE_LABEL[signal.eventType] ?? signal.eventType.toUpperCase()}

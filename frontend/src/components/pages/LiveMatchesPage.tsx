@@ -48,10 +48,10 @@ function MatchCard({ match, selected, onClick }: { match: Match; selected: boole
       </Box>
 
       {/* Teams + score */}
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1.5 }}>
-        <Typography sx={{ fontSize: '0.88rem', fontWeight: 700, color: C.text1 }}>{match.homeTeam}</Typography>
-        <Typography sx={{ fontSize: '1rem', fontFamily: 'monospace', fontWeight: 800, color: isLive ? C.text1 : C.text3, px: 1 }}>{match.score}</Typography>
-        <Typography sx={{ fontSize: '0.88rem', fontWeight: 700, color: C.text1 }}>{match.awayTeam}</Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center', mb: 1.5, gap: 0.5 }}>
+        <Typography sx={{ fontSize: '0.82rem', fontWeight: 700, color: C.text1, flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{match.homeTeam}</Typography>
+        <Typography sx={{ fontSize: '1rem', fontFamily: 'monospace', fontWeight: 800, color: isLive ? C.text1 : C.text3, px: 1, flexShrink: 0 }}>{match.score}</Typography>
+        <Typography sx={{ fontSize: '0.82rem', fontWeight: 700, color: C.text1, flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textAlign: 'right' }}>{match.awayTeam}</Typography>
       </Box>
 
       {/* Win probabilities */}
@@ -196,7 +196,7 @@ export default function LiveMatchesPage() {
 
       <Box sx={{ display: 'flex', gap: 3, flex: 1, overflow: 'hidden', minHeight: 0 }}>
         {/* Left: match list */}
-        <Box sx={{ width: 300, flexShrink: 0, overflow: 'auto', display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Box sx={{ width: 300, flexShrink: 0, overflow: 'auto', display: 'flex', flexDirection: 'column', gap: 2, pb: 2 }}>
           {live.length > 0 && (
             <>
               <Typography sx={{ fontSize: '0.6rem', color: C.positive, fontFamily: 'monospace', letterSpacing: '0.08em' }}>LIVE NOW</Typography>
@@ -216,7 +216,7 @@ export default function LiveMatchesPage() {
         </Box>
 
         {/* Right: detail */}
-        <Box sx={{ flex: 1, overflow: 'auto' }}>
+        <Box sx={{ flex: 1, overflow: 'auto', minWidth: 0 }}>
           {/* Match header */}
           <Box sx={{ mb: 3, p: 2.5, bgcolor: C.surface, border: `1px solid ${C.border}`, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <Box>

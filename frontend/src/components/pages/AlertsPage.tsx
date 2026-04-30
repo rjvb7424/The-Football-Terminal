@@ -205,16 +205,19 @@ export default function AlertsPage() {
 
       <Box sx={{ display: 'flex', gap: 3, flex: 1, overflow: 'hidden', minHeight: 0 }}>
         {/* Alert feed */}
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minWidth: 0 }}>
           {/* Filters */}
-          <Box sx={{ display: 'flex', gap: 1, mb: 2, flexWrap: 'wrap' }}>
-            {PRIORITY_FILTERS.map(f => (
-              <FilterChip key={f.id} label={f.label} active={priority === f.id} onClick={() => setPriority(f.id)} />
-            ))}
-            <Box sx={{ width: 1, bgcolor: C.border, height: 'auto' }} />
-            {TYPE_FILTERS.map(f => (
-              <FilterChip key={f.id} label={f.label} active={type === f.id} onClick={() => setType(f.id)} />
-            ))}
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 2 }}>
+            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+              {PRIORITY_FILTERS.map(f => (
+                <FilterChip key={f.id} label={f.label} active={priority === f.id} onClick={() => setPriority(f.id)} />
+              ))}
+            </Box>
+            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+              {TYPE_FILTERS.map(f => (
+                <FilterChip key={f.id} label={f.label} active={type === f.id} onClick={() => setType(f.id)} />
+              ))}
+            </Box>
           </Box>
 
           <Typography sx={{ fontSize: '0.62rem', color: C.text3, fontFamily: 'monospace', mb: 1.5 }}>
