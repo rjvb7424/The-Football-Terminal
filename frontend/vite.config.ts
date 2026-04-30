@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 // it generates `import { c } from 'react/compiler-runtime'` which breaks
 // when the module is bundled as CJS-only by Vite on this machine.
 export default defineConfig({
-  cacheDir: '/tmp/vft-clean-2',
+  cacheDir: process.env.VITE_CACHE_DIR ?? '.vite-cache',
   plugins: [
     react(),
   ],

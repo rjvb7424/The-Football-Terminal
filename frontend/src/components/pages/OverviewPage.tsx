@@ -2,391 +2,138 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import LinearProgress from '@mui/material/LinearProgress';
 import { C, impactColor } from '../../colors';
-import { SIGNALS, GAINERS, LOSERS, CHART_TEAMS } from '../../data/mockSignals';
+import { GAINERS, LOSERS, SIGNALS } from '../../data/mockSignals';
 import PageHeader from '../shared/PageHeader';
 import FeatureCard from '../shared/FeatureCard';
-import StatusChip from '../shared/StatusChip';
-import ProbabilityBar from '../shared/ProbabilityBar';
-import SignalRow from '../shared/SignalRow';
 
 interface Props {
   shockActive: boolean;
 }
 
-function FeaturedSituation({ shockActive }: { shockActive: boolean }) {
+function TypeLabel({ children }: { children: string }) {
+  return (
+    <Typography sx={{ fontSize: '0.64rem', color: C.text3, fontFamily: 'monospace', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+      {children}
+    </Typography>
+  );
+}
+
+function FeaturedShift({ shockActive }: Props) {
   const sig = SIGNALS[0];
   const after = shockActive ? sig.after : sig.before;
   const impact = shockActive ? sig.impact : 0;
-  const sign = impact >= 0 ? '+' : '';
+  const color = impact < 0 ? C.negative : impact > 0 ? C.positive : C.text3;
+  const sign = impact > 0 ? '+' : '';
 
   return (
-    <FeatureCard title="Featured Situation" accent titleRight={<StatusChip variant={sig.status} pulse />} noPadding>
-      <Box sx={{ p: 2.5 }}>
-        {/* Event label + impact */}
-        <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', mb: 2 }}>
-          <Box sx={{ flex: 1, pr: 2 }}>
-            <Typography
-              sx={{
-                fontSize: '0.58rem',
-                color: C.text3,
-                fontFamily: 'monospace',
-                mb: 0.75,
-                letterSpacing: '0.07em',
-                textTransform: 'uppercase',
-              }}
-            >
-              [{sig.eventType}] · {sig.club} · {sig.competition}
-            </Typography>
-            <Typography
-              sx={{ fontSize: '1.1rem', fontWeight: 700, color: C.text1, lineHeight: 1.2, mb: 0.75 }}
-            >
-              {sig.title}
-            </Typography>
-            <Typography sx={{ fontSize: '0.8rem', color: C.text2, lineHeight: 1.6 }}>
-              {sig.subtitle}
-            </Typography>
-          </Box>
-
-          {shockActive && (
-            <Box
-              sx={{
-                px: 1.5,
-                py: 1,
-                bgcolor: C.negativeDim,
-                border: `1px solid rgba(248,81,73,0.3)`,
-                borderRadius: '6px',
-                textAlign: 'center',
-                flexShrink: 0,
-              }}
-            >
-              <Typography
-                sx={{ fontSize: '1.35rem', fontFamily: 'monospace', fontWeight: 700, color: C.negative, lineHeight: 1 }}
-              >
-                {sign}{impact}
-              </Typography>
-              <Typography sx={{ fontSize: '0.5rem', color: C.negative, fontFamily: 'monospace', mt: 0.25 }}>
-                IMPACT
-              </Typography>
-            </Box>
-          )}
-        </Box>
-
-        {/* Probability bars */}
-        <Box sx={{ mb: 2.5 }}>
-          <ProbabilityBar
-            label={`${sig.club} — ${sig.competition} title probability`}
-            before={sig.before}
-            after={after}
-            color={impact < 0 ? C.negative : C.positive}
-          />
-        </Box>
-
-        {/* Stats row */}
-        <Box sx={{ display: 'flex', gap: 1.5, mb: 2.5 }}>
-          <Box
-            sx={{
-              flex: 1,
-              p: 1.5,
-              bgcolor: C.card,
-              border: `1px solid ${C.border}`,
-              borderRadius: '6px',
-            }}
-          >
-            <Typography sx={{ fontSize: '0.55rem', color: C.text3, fontFamily: 'monospace', mb: 0.5 }}>
-              CONFIDENCE
-            </Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25 }}>
-              <Typography
-                sx={{ fontSize: '1rem', fontFamily: 'monospace', fontWeight: 700, color: C.text1 }}
-              >
-                {sig.confidence}%
-              </Typography>
-              <LinearProgress
-                variant="determinate"
-                value={sig.confidence}
-                sx={{
-                  flex: 1,
-                  height: 4,
-                  borderRadius: 2,
-                  bgcolor: C.border,
-                  '& .MuiLinearProgress-bar': { bgcolor: C.accent },
-                }}
-              />
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              px: 2,
-              py: 1.5,
-              bgcolor: C.card,
-              border: `1px solid ${C.border}`,
-              borderRadius: '6px',
-              textAlign: 'center',
-              flexShrink: 0,
-            }}
-          >
-            <Typography sx={{ fontSize: '0.55rem', color: C.text3, fontFamily: 'monospace', mb: 0.5 }}>
-              AGO
-            </Typography>
-            <Typography
-              sx={{ fontSize: '1rem', fontFamily: 'monospace', fontWeight: 700, color: C.text1 }}
-            >
-              {sig.minutesAgo}m
-            </Typography>
-          </Box>
-        </Box>
-
-        {/* Explanation */}
-        <Box
-          sx={{
-            p: 1.75,
-            bgcolor: C.card,
-            border: `1px solid ${C.border}`,
-            borderRadius: '6px',
-            mb: 2.5,
-          }}
-        >
-          <Typography sx={{ fontSize: '0.6rem', color: C.accent, fontFamily: 'monospace', mb: 0.5, letterSpacing: '0.07em' }}>
-            WHY IT CHANGED
+    <FeatureCard accent>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '1fr auto' }, gap: { xs: 4, lg: 6 }, alignItems: 'end' }}>
+        <Box>
+          <TypeLabel>{sig.eventType}</TypeLabel>
+          <Typography sx={{ mt: 1.2, fontSize: { xs: '1.7rem', md: '2.25rem' }, fontWeight: 850, color: C.text1, lineHeight: 1.05, letterSpacing: '-0.03em' }}>
+            {sig.title}
           </Typography>
-          <Typography sx={{ fontSize: '0.78rem', color: C.text2, lineHeight: 1.65 }}>
+          <Typography sx={{ mt: 1.5, fontSize: '0.94rem', color: C.text2, lineHeight: 1.75, maxWidth: 620 }}>
             {sig.explanation}
           </Typography>
         </Box>
 
-        {/* Rival impact */}
-        <Typography
-          sx={{ fontSize: '0.55rem', color: C.text3, fontFamily: 'monospace', mb: 1, letterSpacing: '0.08em' }}
-        >
-          RIVAL IMPACT
-        </Typography>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.875 }}>
-          {sig.affectedTeams.map(t => {
-            const tc = impactColor(t.impact);
-            const ts = t.impact > 0 ? '+' : '';
-            return (
-              <Box
-                key={t.name}
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  px: 1.75,
-                  py: 1,
-                  bgcolor: t.impact > 0 ? 'rgba(63,185,80,0.05)' : 'rgba(248,81,73,0.05)',
-                  border: `1px solid ${t.impact > 0 ? 'rgba(63,185,80,0.2)' : 'rgba(248,81,73,0.15)'}`,
-                  borderRadius: '6px',
-                }}
-              >
-                <Typography sx={{ fontSize: '0.75rem', color: C.text2 }}>{t.name}</Typography>
-                <Typography
-                  sx={{ fontSize: '0.82rem', fontFamily: 'monospace', fontWeight: 700, color: tc }}
-                >
-                  {ts}{t.impact}pp
-                </Typography>
-              </Box>
-            );
-          })}
+        <Box sx={{ minWidth: { lg: 330 } }}>
+          <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1.4, mb: 1.5 }}>
+            <Typography sx={{ fontSize: { xs: '2.4rem', md: '3.4rem' }, fontFamily: 'monospace', fontWeight: 850, color: C.text1, lineHeight: 1 }}>
+              {sig.before}%
+            </Typography>
+            <Typography sx={{ fontSize: '1.35rem', color: C.text3 }}>→</Typography>
+            <Typography sx={{ fontSize: { xs: '2.4rem', md: '3.4rem' }, fontFamily: 'monospace', fontWeight: 850, color, lineHeight: 1 }}>
+              {after}%
+            </Typography>
+          </Box>
+          <LinearProgress
+            variant="determinate"
+            value={after}
+            sx={{
+              height: 6,
+              borderRadius: 3,
+              bgcolor: 'rgba(255,255,255,0.08)',
+              '& .MuiLinearProgress-bar': { bgcolor: color },
+            }}
+          />
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1.25 }}>
+            <Typography sx={{ fontSize: '0.72rem', color, fontFamily: 'monospace', fontWeight: 800 }}>
+              {sign}{impact}pp impact
+            </Typography>
+            <Typography sx={{ fontSize: '0.72rem', color: C.text3, fontFamily: 'monospace' }}>
+              {sig.confidence}% confidence · {sig.minutesAgo}m ago
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </FeatureCard>
   );
 }
 
-function TopSignalsCard() {
-  const top = SIGNALS.slice(0, 5);
+function TopSignals() {
   return (
-    <FeatureCard
-      title="Top Signals"
-      noPadding
-      titleRight={
-        <Typography sx={{ fontSize: '0.58rem', color: C.text3, fontFamily: 'monospace' }}>
-          Last 1h
-        </Typography>
-      }
-    >
-      <Box>
-        {top.map(sig => (
-          <SignalRow key={sig.id} signal={sig} />
+    <FeatureCard title="Top Signals" noPadding>
+      {SIGNALS.slice(0, 5).map(sig => {
+        const color = impactColor(sig.impact);
+        const sign = sig.impact > 0 ? '+' : '';
+        return (
+          <Box key={sig.id} sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr auto', md: '1fr 110px 70px 54px' }, gap: 1.5, alignItems: 'center', px: 2.5, py: 1.55, borderTop: `1px solid rgba(255,255,255,0.055)` }}>
+            <Box sx={{ minWidth: 0 }}>
+              <Typography sx={{ fontSize: '0.84rem', color: C.text1, fontWeight: 720, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {sig.title}
+              </Typography>
+              <Typography sx={{ fontSize: '0.68rem', color: C.text3, mt: 0.2 }}>{sig.club}</Typography>
+            </Box>
+            <Typography sx={{ display: { xs: 'none', md: 'block' }, fontSize: '0.68rem', color: C.text3, fontFamily: 'monospace', textTransform: 'uppercase' }}>
+              {sig.eventType}
+            </Typography>
+            <Typography sx={{ fontSize: '0.82rem', color, fontFamily: 'monospace', fontWeight: 850, textAlign: 'right' }}>
+              {sign}{sig.impact}pp
+            </Typography>
+            <Typography sx={{ display: { xs: 'none', md: 'block' }, fontSize: '0.68rem', color: C.text3, fontFamily: 'monospace', textAlign: 'right' }}>
+              {sig.minutesAgo}m
+            </Typography>
+          </Box>
+        );
+      })}
+    </FeatureCard>
+  );
+}
+
+function MoversColumn({ title, items, positive }: { title: string; items: typeof GAINERS; positive: boolean }) {
+  const color = positive ? C.positive : C.negative;
+  return (
+    <Box>
+      <Typography sx={{ fontSize: '0.64rem', color, fontFamily: 'monospace', letterSpacing: '0.08em', mb: 2 }}>
+        {title}
+      </Typography>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+        {items.slice(0, 3).map(item => (
+          <Box key={item.name} sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
+            <Box sx={{ minWidth: 0 }}>
+              <Typography sx={{ fontSize: '0.82rem', color: C.text1, fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {item.club ?? item.name}
+              </Typography>
+              <Typography sx={{ fontSize: '0.68rem', color: C.text3 }}>{item.category}</Typography>
+            </Box>
+            <Typography sx={{ fontSize: '0.86rem', color, fontFamily: 'monospace', fontWeight: 850, flexShrink: 0 }}>
+              {positive ? '+' : ''}{item.change}pp
+            </Typography>
+          </Box>
         ))}
       </Box>
-    </FeatureCard>
+    </Box>
   );
 }
 
-function BiggestShiftsCard() {
+function BiggestMovers() {
   return (
-    <FeatureCard title="Biggest Shifts Today">
-      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3 }}>
-        {/* Losers */}
-        <Box>
-          <Typography
-            sx={{
-              fontSize: '0.58rem',
-              color: C.negative,
-              fontFamily: 'monospace',
-              letterSpacing: '0.08em',
-              mb: 1.75,
-            }}
-          >
-            ▼ BIGGEST DROPS
-          </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-            {LOSERS.slice(0, 3).map(item => (
-              <Box
-                key={item.name}
-                sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 1 }}
-              >
-                <Box sx={{ flex: 1, minWidth: 0 }}>
-                  <Typography
-                    sx={{
-                      fontSize: '0.78rem',
-                      color: C.text1,
-                      fontWeight: 600,
-                      whiteSpace: 'nowrap',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                    }}
-                  >
-                    {item.club ?? item.name}
-                  </Typography>
-                  <Typography sx={{ fontSize: '0.62rem', color: C.text3, mt: 0.2 }}>
-                    {item.category}
-                  </Typography>
-                </Box>
-                <Box sx={{ textAlign: 'right', flexShrink: 0 }}>
-                  <Typography
-                    sx={{ fontSize: '0.85rem', fontFamily: 'monospace', fontWeight: 700, color: C.negative }}
-                  >
-                    {item.change}pp
-                  </Typography>
-                  <Typography sx={{ fontSize: '0.62rem', color: C.text3, fontFamily: 'monospace' }}>
-                    {item.current}%
-                  </Typography>
-                </Box>
-              </Box>
-            ))}
-          </Box>
-        </Box>
-
-        {/* Gainers */}
-        <Box>
-          <Typography
-            sx={{
-              fontSize: '0.58rem',
-              color: C.positive,
-              fontFamily: 'monospace',
-              letterSpacing: '0.08em',
-              mb: 1.75,
-            }}
-          >
-            ▲ BIGGEST GAINS
-          </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-            {GAINERS.slice(0, 3).map(item => (
-              <Box
-                key={item.name}
-                sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 1 }}
-              >
-                <Box sx={{ flex: 1, minWidth: 0 }}>
-                  <Typography
-                    sx={{
-                      fontSize: '0.78rem',
-                      color: C.text1,
-                      fontWeight: 600,
-                      whiteSpace: 'nowrap',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                    }}
-                  >
-                    {item.club ?? item.name}
-                  </Typography>
-                  <Typography sx={{ fontSize: '0.62rem', color: C.text3, mt: 0.2 }}>
-                    {item.category}
-                  </Typography>
-                </Box>
-                <Box sx={{ textAlign: 'right', flexShrink: 0 }}>
-                  <Typography
-                    sx={{ fontSize: '0.85rem', fontFamily: 'monospace', fontWeight: 700, color: C.positive }}
-                  >
-                    +{item.change}pp
-                  </Typography>
-                  <Typography sx={{ fontSize: '0.62rem', color: C.text3, fontFamily: 'monospace' }}>
-                    {item.current}%
-                  </Typography>
-                </Box>
-              </Box>
-            ))}
-          </Box>
-        </Box>
-      </Box>
-    </FeatureCard>
-  );
-}
-
-function ProbabilityIndexCard({ shockActive }: { shockActive: boolean }) {
-  const teams = shockActive
-    ? CHART_TEAMS
-    : CHART_TEAMS.map(t => ({
-        ...t,
-        points: t.points.map((_, i) => (i < 17 ? t.points[i] : t.points[16])),
-      }));
-
-  return (
-    <FeatureCard
-      title="La Liga Title Race"
-      titleRight={
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
-          <span className="live-dot" style={{ width: 6, height: 6 }} />
-          <Typography sx={{ fontSize: '0.58rem', color: C.positive, fontFamily: 'monospace', fontWeight: 700 }}>
-            LIVE
-          </Typography>
-        </Box>
-      }
-    >
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-        {teams.map(team => {
-          const current = team.points[team.points.length - 1];
-          const prev = team.points[16];
-          const delta = current - prev;
-          const sign = delta >= 0 ? '+' : '';
-          const color = delta > 0 ? C.positive : delta < 0 ? C.negative : C.text3;
-
-          return (
-            <Box key={team.name}>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 0.75 }}>
-                <Typography sx={{ fontSize: '0.78rem', color: C.text1, fontWeight: 600 }}>
-                  {team.name}
-                </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25 }}>
-                  {shockActive && delta !== 0 && (
-                    <Typography sx={{ fontSize: '0.62rem', color, fontFamily: 'monospace' }}>
-                      {sign}{Math.round(delta)}pp
-                    </Typography>
-                  )}
-                  <Typography
-                    sx={{ fontSize: '0.9rem', fontFamily: 'monospace', fontWeight: 700, color: team.color }}
-                  >
-                    {current}%
-                  </Typography>
-                </Box>
-              </Box>
-              <LinearProgress
-                variant="determinate"
-                value={current}
-                sx={{
-                  height: 5,
-                  borderRadius: 2,
-                  bgcolor: C.border,
-                  '& .MuiLinearProgress-bar': {
-                    bgcolor: team.color,
-                    transition: 'width 0.65s ease',
-                  },
-                }}
-              />
-            </Box>
-          );
-        })}
+    <FeatureCard title="Biggest Movers">
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 4 }}>
+        <MoversColumn title="GAINERS" items={GAINERS} positive />
+        <MoversColumn title="LOSERS" items={LOSERS} positive={false} />
       </Box>
     </FeatureCard>
   );
@@ -394,22 +141,14 @@ function ProbabilityIndexCard({ shockActive }: { shockActive: boolean }) {
 
 export default function OverviewPage({ shockActive }: Props) {
   return (
-    <Box sx={{ flex: 1, overflow: 'auto', p: { xs: 3, md: 4 } }}>
-      <PageHeader
-        title="Overview"
-        subtitle="Monitor the football world before the narrative catches up."
-      />
-
-      <Box
-        sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '3fr 2fr' }, gap: 3, mb: 3 }}
-      >
-        <FeaturedSituation shockActive={shockActive} />
-        <TopSignalsCard />
-      </Box>
-
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '3fr 2fr' }, gap: 3 }}>
-        <BiggestShiftsCard />
-        <ProbabilityIndexCard shockActive={shockActive} />
+    <Box sx={{ flex: 1, overflow: 'auto', p: { xs: 3, md: 5 } }}>
+      <PageHeader title="Overview" subtitle="Monitor the football world before the narrative catches up." />
+      <Box sx={{ display: 'grid', gap: 3.5 }}>
+        <FeaturedShift shockActive={shockActive} />
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', xl: '1.15fr 0.85fr' }, gap: 3.5 }}>
+          <TopSignals />
+          <BiggestMovers />
+        </Box>
       </Box>
     </Box>
   );

@@ -16,6 +16,7 @@ import TitleRacesPage from './components/pages/TitleRacesPage';
 import TransfersPage from './components/pages/TransfersPage';
 import AlertsPage from './components/pages/AlertsPage';
 import NewsPage from './components/pages/NewsPage';
+import ChatPage from './components/pages/ChatPage';
 
 type View = 'home' | 'dashboard';
 
@@ -50,6 +51,7 @@ export default function App() {
       case 'transfers':  return <TransfersPage />;
       case 'alerts':     return <AlertsPage />;
       case 'news':       return <NewsPage />;
+      case 'chat':       return <ChatPage />;
       default:           return <OverviewPage shockActive={shockActive} />;
     }
   };

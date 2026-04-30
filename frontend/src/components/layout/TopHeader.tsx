@@ -1,12 +1,6 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Chip from '@mui/material/Chip';
-import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
-import Tooltip from '@mui/material/Tooltip';
 import Search from '@mui/icons-material/Search';
-import CrisisAlert from '@mui/icons-material/CrisisAlert';
-import Bolt from '@mui/icons-material/Bolt';
 import { C } from '../../colors';
 
 interface Props {
@@ -15,176 +9,67 @@ interface Props {
   onBackHome?: () => void;
 }
 
-export default function TopHeader({ shockActive, onSimulateShock, onBackHome }: Props) {
+export default function TopHeader({ onBackHome }: Props) {
   return (
     <Box
       sx={{
-        height: 52,
-        bgcolor: C.surface,
-        borderBottom: `1px solid ${C.border}`,
+        height: 58,
+        bgcolor: 'rgba(8,11,15,0.86)',
+        borderBottom: `1px solid rgba(255,255,255,0.06)`,
         display: 'flex',
         alignItems: 'center',
-        px: 2,
+        px: { xs: 2, md: 3 },
         gap: 2,
         flexShrink: 0,
         zIndex: 10,
+        backdropFilter: 'blur(14px)',
       }}
     >
-      {/* Brand */}
       <Box
         onClick={onBackHome}
         sx={{
           display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: 1,
-          minWidth: 220,
+          flexDirection: 'column',
+          minWidth: { xs: 160, md: 260 },
           cursor: onBackHome ? 'pointer' : 'default',
-          transition: 'opacity 0.15s ease',
-          '&:hover': onBackHome ? { opacity: 0.7 } : {},
+          '&:hover': onBackHome ? { opacity: 0.76 } : {},
         }}
       >
-        <Typography
-          sx={{
-            fontWeight: 800,
-            fontSize: '0.82rem',
-            letterSpacing: '0.12em',
-            color: C.accent,
-            textTransform: 'uppercase',
-            fontFamily: "'JetBrains Mono', monospace",
-            textShadow: `0 0 10px ${C.accentGlow}`,
-            whiteSpace: 'nowrap',
-          }}
-        >
+        <Typography sx={{ fontWeight: 800, fontSize: '0.76rem', letterSpacing: '0.1em', color: C.text1, textTransform: 'uppercase', fontFamily: 'monospace' }}>
           The Football Terminal
         </Typography>
-        <Typography
-          sx={{
-            fontSize: '0.6rem',
-            color: C.text3,
-            fontStyle: 'italic',
-            whiteSpace: 'nowrap',
-            display: { xs: 'none', lg: 'block' },
-          }}
-        >
-          before the narrative catches up
+        <Typography sx={{ fontSize: '0.66rem', color: C.text3, display: { xs: 'none', md: 'block' } }}>
+          Monitor the football world before the narrative catches up.
         </Typography>
       </Box>
 
-      {/* Live stats */}
-      <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2, flex: 1, minWidth: 0 }}>
-        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 0.75, flexShrink: 0 }}>
-          <span className="live-dot" />
-          <Typography sx={{ fontSize: '0.7rem', color: C.text2, fontWeight: 600, letterSpacing: '0.04em' }}>
-            LIVE
-          </Typography>
-        </Box>
-
-        <Typography sx={{ fontSize: '0.68rem', color: C.text3, fontFamily: 'monospace', display: { xs: 'none', lg: 'block' }, whiteSpace: 'nowrap' }}>
-          Monitoring{' '}
-          <Box component="span" sx={{ color: C.text1, fontWeight: 600 }}>128</Box>{' '}
-          matches ·{' '}
-          <Box component="span" sx={{ color: C.text1, fontWeight: 600 }}>14</Box>{' '}
-          leagues ·{' '}
-          <Box component="span" sx={{ color: C.accent, fontWeight: 700 }}>2,481</Box>{' '}
-          active signals
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.65, flexShrink: 0 }}>
+        <Box component="span" className="live-dot" />
+        <Typography sx={{ fontSize: '0.65rem', color: C.text2, fontFamily: 'monospace', letterSpacing: '0.06em' }}>
+          LIVE
         </Typography>
-
-        <Chip
-          size="small"
-          label="HIGH ACTIVITY"
-          sx={{
-            bgcolor: 'rgba(248,81,73,0.12)',
-            color: C.negative,
-            border: `1px solid rgba(248,81,73,0.25)`,
-            fontSize: '0.6rem',
-            height: 18,
-            letterSpacing: '0.06em',
-            fontWeight: 700,
-            flexShrink: 0,
-            display: { xs: 'none', md: 'flex' },
-          }}
-        />
       </Box>
 
-      {/* Shock button */}
-      <Tooltip title="Trigger a major football shock event to watch probabilities shift" arrow>
-        <Button
-          onClick={onSimulateShock}
-          size="small"
-          startIcon={shockActive ? <CrisisAlert sx={{ fontSize: 14 }} /> : <Bolt sx={{ fontSize: 14 }} />}
-          sx={{
-            fontSize: '0.65rem',
-            fontWeight: 700,
-            letterSpacing: '0.06em',
-            color: shockActive ? C.negative : C.amber,
-            bgcolor: shockActive ? C.negativeDim : C.amberDim,
-            border: `1px solid ${shockActive ? 'rgba(248,81,73,0.35)' : 'rgba(210,153,34,0.35)'}`,
-            px: 1.5,
-            py: 0.5,
-            minWidth: 0,
-            whiteSpace: 'nowrap',
-            textTransform: 'uppercase',
-            '&:hover': {
-              bgcolor: shockActive ? 'rgba(248,81,73,0.2)' : 'rgba(210,153,34,0.2)',
-            },
-          }}
-        >
-          {shockActive ? '⚡ Shock Active' : '⚡ Simulate Shock'}
-        </Button>
-      </Tooltip>
+      <Box sx={{ flex: 1 }} />
 
-      {/* Search */}
       <Box
         sx={{
           display: 'flex',
           alignItems: 'center',
           gap: 0.75,
-          bgcolor: C.card,
-          border: `1px solid ${C.border}`,
-          borderRadius: '6px',
+          width: { xs: 154, sm: 220, md: 280 },
+          bgcolor: 'rgba(255,255,255,0.035)',
+          border: `1px solid rgba(255,255,255,0.07)`,
+          borderRadius: '7px',
           px: 1.25,
-          py: 0.5,
-          cursor: 'pointer',
-          '&:hover': { borderColor: C.borderLight },
-          transition: 'border-color 0.15s',
+          py: 0.75,
         }}
       >
-        <Search sx={{ fontSize: 14, color: C.text3 }} />
-        <Typography sx={{ fontSize: '0.68rem', color: C.text3, whiteSpace: 'nowrap' }}>
-          Search signals…
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: '0.6rem',
-            color: C.text3,
-            bgcolor: C.border,
-            px: 0.5,
-            py: 0.1,
-            borderRadius: '3px',
-            fontFamily: 'monospace',
-            ml: 1,
-          }}
-        >
-          ⌘K
+        <Search sx={{ fontSize: 15, color: C.text3 }} />
+        <Typography sx={{ fontSize: '0.72rem', color: C.text3, whiteSpace: 'nowrap' }}>
+          Search signals
         </Typography>
       </Box>
-
-      {/* Avatar */}
-      <Avatar
-        sx={{
-          width: 28,
-          height: 28,
-          bgcolor: C.accentDim,
-          border: `1px solid ${C.borderLight}`,
-          fontSize: '0.7rem',
-          color: C.accent,
-          fontWeight: 700,
-          flexShrink: 0,
-        }}
-      >
-        FT
-      </Avatar>
     </Box>
   );
 }

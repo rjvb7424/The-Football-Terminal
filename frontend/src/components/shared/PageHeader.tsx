@@ -11,7 +11,7 @@ interface Props {
 
 export default function PageHeader({ title, subtitle, right }: Props) {
   return (
-    <Box sx={{ mb: 3.5 }}>
+    <Box sx={{ mb: 4 }}>
       <Box
         sx={{
           display: 'flex',
@@ -24,8 +24,8 @@ export default function PageHeader({ title, subtitle, right }: Props) {
         <Box>
           <Typography
             sx={{
-              fontSize: '1.3rem',
-              fontWeight: 700,
+              fontSize: { xs: '1.35rem', md: '1.55rem' },
+              fontWeight: 750,
               color: C.text1,
               letterSpacing: '-0.02em',
               lineHeight: 1.15,
@@ -38,9 +38,9 @@ export default function PageHeader({ title, subtitle, right }: Props) {
               sx={{
                 fontSize: '0.78rem',
                 color: C.text3,
-                mt: 0.5,
+                mt: 0.75,
                 lineHeight: 1.55,
-                maxWidth: 540,
+                maxWidth: 620,
               }}
             >
               {subtitle}
@@ -49,14 +49,6 @@ export default function PageHeader({ title, subtitle, right }: Props) {
         </Box>
         {right && <Box sx={{ flexShrink: 0 }}>{right}</Box>}
       </Box>
-      <Box
-        sx={{
-          mt: 2,
-          height: 1,
-          bgcolor: C.border,
-          width: '100%',
-        }}
-      />
     </Box>
   );
 }

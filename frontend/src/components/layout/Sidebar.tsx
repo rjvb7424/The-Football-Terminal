@@ -11,11 +11,12 @@ import EmojiEvents from '@mui/icons-material/EmojiEvents';
 import SwapHoriz from '@mui/icons-material/SwapHoriz';
 import NotificationsActive from '@mui/icons-material/NotificationsActive';
 import Article from '@mui/icons-material/Article';
+import Forum from '@mui/icons-material/Forum';
 import Settings from '@mui/icons-material/Settings';
 import Home from '@mui/icons-material/Home';
 import { C } from '../../colors';
 
-export type PageId = 'overview' | 'signals' | 'shifts' | 'matches' | 'titles' | 'transfers' | 'alerts' | 'news';
+export type PageId = 'overview' | 'signals' | 'shifts' | 'matches' | 'titles' | 'transfers' | 'alerts' | 'news' | 'chat';
 
 const NAV_ITEMS: { id: PageId; icon: ReactElement; label: string; question: string }[] = [
   { id: 'overview',   icon: <Dashboard sx={{ fontSize: 16 }} />,                label: 'Overview',            question: 'What matters most?' },
@@ -26,6 +27,7 @@ const NAV_ITEMS: { id: PageId; icon: ReactElement; label: string; question: stri
   { id: 'transfers',  icon: <SwapHoriz sx={{ fontSize: 16 }} />,                label: 'Transfers',           question: 'What moves are live?' },
   { id: 'alerts',     icon: <NotificationsActive sx={{ fontSize: 16 }} />,      label: 'Alerts',              question: 'What to watch?' },
   { id: 'news',       icon: <Article sx={{ fontSize: 16 }} />,                  label: 'News',                question: 'What\'s the story?' },
+  { id: 'chat',       icon: <Forum sx={{ fontSize: 16 }} />,                    label: 'Chat',                question: 'What are people saying?' },
 ];
 
 interface Props {
@@ -38,7 +40,7 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
   return (
     <Box
       sx={{
-        width: 200,
+        width: 164,
         flexShrink: 0,
         height: '100vh',
         bgcolor: C.surface,
@@ -55,11 +57,11 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
         sx={{
           display: 'flex',
           alignItems: 'center',
-          gap: 1.5,
-          px: 2.25,
+          gap: 1,
+          px: 1.5,
           pt: 2,
           pb: 1.75,
-          borderBottom: `1px solid ${C.border}`,
+          borderBottom: `1px solid rgba(255,255,255,0.06)`,
           cursor: onBackHome ? 'pointer' : 'default',
           flexShrink: 0,
           transition: 'opacity 0.15s',
@@ -76,7 +78,7 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
             alignItems: 'center',
             justifyContent: 'center',
             flexShrink: 0,
-            boxShadow: `0 0 14px ${C.accentGlow}`,
+          boxShadow: 'none',
           }}
         >
           <SportsSoccer sx={{ fontSize: 15, color: '#000' }} />
@@ -102,7 +104,7 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
       </Box>
 
       {/* Section label */}
-      <Box sx={{ px: 2.25, pt: 2, pb: 0.75, flexShrink: 0 }}>
+      <Box sx={{ px: 1.5, pt: 2.25, pb: 0.75, flexShrink: 0 }}>
         <Typography
           sx={{
             fontSize: '0.54rem',
@@ -117,7 +119,7 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
       </Box>
 
       {/* Nav items */}
-      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 0.25, px: 1.25 }}>
+      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 0.2, px: 0.75 }}>
         {NAV_ITEMS.map(item => {
           const isActive = active === item.id;
           return (
@@ -127,16 +129,16 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 1.25,
-                px: 1.25,
-                py: 0.9,
+                gap: 1,
+                px: 1,
+                py: 0.82,
                 borderRadius: '6px',
-                borderLeft: `2px solid ${isActive ? C.accent : 'transparent'}`,
-                bgcolor: isActive ? C.accentDim : 'transparent',
+                borderLeft: `1px solid ${isActive ? C.accent : 'transparent'}`,
+                bgcolor: isActive ? 'rgba(0,180,216,0.08)' : 'transparent',
                 cursor: 'pointer',
                 transition: 'all 0.12s ease',
                 '&:hover': {
-                  bgcolor: isActive ? C.accentDim : 'rgba(255,255,255,0.04)',
+                  bgcolor: isActive ? 'rgba(0,180,216,0.08)' : 'rgba(255,255,255,0.03)',
                   borderLeftColor: isActive ? C.accent : C.borderLight,
                 },
               }}
@@ -146,7 +148,7 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
               </Box>
               <Typography
                 sx={{
-                  fontSize: '0.75rem',
+                  fontSize: '0.72rem',
                   fontWeight: isActive ? 600 : 400,
                   color: isActive ? C.accent : C.text2,
                   transition: 'color 0.12s ease',
@@ -160,7 +162,7 @@ export default function Sidebar({ active, onSelect, onBackHome }: Props) {
         })}
       </Box>
 
-      <Divider sx={{ borderColor: C.border, mx: 1.25, my: 0.5 }} />
+      <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)', mx: 1.25, my: 0.5 }} />
 
       {/* Bottom */}
       <Box sx={{ px: 1.25, pb: 1.5, display: 'flex', flexDirection: 'column', gap: 0.25, flexShrink: 0 }}>
