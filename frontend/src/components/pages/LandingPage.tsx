@@ -135,7 +135,7 @@ export default function LandingPage({ onEnterDashboard }: Props) {
             '&:hover': { bgcolor: C.accentBright },
           }}
         >
-          Open the Terminal
+          Open the Map
         </Box>
       </Box>
 
@@ -188,7 +188,7 @@ export default function LandingPage({ onEnterDashboard }: Props) {
               '&:hover': { bgcolor: C.accentBright },
             }}
           >
-            Open the Terminal
+            Open the Map
           </Box>
         </Box>
 
