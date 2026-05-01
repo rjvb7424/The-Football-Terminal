@@ -12,18 +12,16 @@ import SwapHoriz from '@mui/icons-material/SwapHoriz';
 import NotificationsActive from '@mui/icons-material/NotificationsActive';
 import Article from '@mui/icons-material/Article';
 import Forum from '@mui/icons-material/Forum';
-import Public from '@mui/icons-material/Public';
 import Settings from '@mui/icons-material/Settings';
 import Home from '@mui/icons-material/Home';
 import { C } from '../../colors';
 
-export type PageId = 'overview' | 'signals' | 'shifts' | 'map' | 'matches' | 'titles' | 'transfers' | 'alerts' | 'news' | 'chat';
+export type PageId = 'overview' | 'signals' | 'shifts' | 'matches' | 'titles' | 'transfers' | 'alerts' | 'news' | 'chat';
 
 const NAV_ITEMS: { id: PageId; icon: ReactElement; label: string; question: string }[] = [
   { id: 'overview',   icon: <Dashboard sx={{ fontSize: 16 }} />,                label: 'Overview',            question: 'What matters most?' },
   { id: 'signals',    icon: <Bolt sx={{ fontSize: 16 }} />,                     label: 'Live Signals',        question: 'What happened?' },
   { id: 'shifts',     icon: <QueryStats sx={{ fontSize: 16 }} />,               label: 'Probability Shifts',  question: 'What changed?' },
-  { id: 'map',        icon: <Public sx={{ fontSize: 16 }} />,                   label: 'Situation Map',       question: 'Where is it happening?' },
   { id: 'matches',    icon: <SportsSoccerOutlined sx={{ fontSize: 16 }} />,     label: 'Live Matches',        question: 'How is it changing?' },
   { id: 'titles',     icon: <EmojiEvents sx={{ fontSize: 16 }} />,              label: 'Title Races',         question: 'Who is winning?' },
   { id: 'transfers',  icon: <SwapHoriz sx={{ fontSize: 16 }} />,                label: 'Transfers',           question: 'What moves are live?' },

@@ -5,6 +5,7 @@ import { C, impactColor } from '../../colors';
 import { GAINERS, LOSERS, SIGNALS } from '../../data/mockSignals';
 import PageHeader from '../shared/PageHeader';
 import FeatureCard from '../shared/FeatureCard';
+import SituationMapPanel from '../shared/SituationMapPanel';
 
 interface Props {
   shockActive: boolean;
@@ -146,8 +147,20 @@ function BiggestMovers() {
 export default function OverviewPage({ shockActive }: Props) {
   return (
     <Box sx={{ flex: 1, overflow: 'auto', p: { xs: 3, md: 5 } }}>
-      <PageHeader title="Overview" subtitle="Monitor the football world before the narrative catches up." />
+      <PageHeader
+        title="Overview"
+        subtitle="Monitor the football world before the narrative catches up."
+        right={
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.7, px: 1.15, py: 0.55, border: `1px solid rgba(84,214,111,0.22)`, borderRadius: '999px', bgcolor: 'rgba(84,214,111,0.055)' }}>
+            <Box component="span" className="live-dot" />
+            <Typography sx={{ fontSize: '0.62rem', color: C.positive, fontFamily: 'monospace', fontWeight: 850 }}>
+              LIVE SITUATION MAP
+            </Typography>
+          </Box>
+        }
+      />
       <Box sx={{ display: 'grid', gap: 3.5 }}>
+        <SituationMapPanel height={{ xs: 540, md: 690, lg: 720 }} listMaxHeight={720} />
         <FeaturedShift shockActive={shockActive} />
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', xl: '1.15fr 0.85fr' }, gap: 3.5 }}>
           <TopSignals />
